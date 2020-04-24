@@ -21,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        final Intent intent = new Intent(this,Main2Activity.class);
+        final Intent intent = new Intent(this,PlayerActivity.class);
         final Intent Resintent = new Intent(this,ResActivity.class);
         final UserData userData = new UserData(this);
 
@@ -68,5 +68,10 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(Resintent);
             }
         });
+    }
+
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
     }
 }
