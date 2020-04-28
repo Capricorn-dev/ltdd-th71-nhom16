@@ -55,4 +55,5 @@ public class ResActivity extends AppCompatActivity {
         User user = new User(UserName,Password);
         return user;
     }
+
 }
