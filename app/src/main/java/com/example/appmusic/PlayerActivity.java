@@ -5,14 +5,10 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -21,17 +17,12 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.media.MediaPlayer.OnCompletionListener;
-import java.io.File;
+
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Objects;
 import java.util.Random;
 
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
-import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
 public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnCompletionListener {
     ImageView cdDisc;
@@ -54,143 +45,55 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
     int position = 0;
     MediaPlayer mediaPlayer = new MediaPlayer();
 
-
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player);
-        AnhXa();
+
+        /**
+         * Hàm lấy ID của các phần tử
+         **/
+        anhXa();
+
         songsManager = new SongsManager();
         SetDataSource(position);
         mediaPlayer.setOnCompletionListener(this);
 
-
-
         /**
          * Bắt đầu phát nhạc
          **/
-        btnPlay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (checkPermission()) {
-                    if(mediaPlayer.isPlaying()) {
-                        if(mediaPlayer != null)
-                        {
-                            mediaPlayer.pause();
-                            btnPlay.setImageResource(R.drawable.btn_play);
-                            cdDisc.clearAnimation();
-                        }
-                    }
-                    else {
-                        if(mediaPlayer != null) {
-                            mediaPlayer.start();
-                            //songTitleLabel.setText(songsManager.arraySong().get(position).get("songTitle"));
-                            cdDisc.startAnimation(animation);
-                            btnPlay.setImageResource(R.drawable.btn_pause);
-                            SetTimeTotal();
-                            UpdateTimeSong();
-                        }
-                    }
-                }
-                else {
-                    requestPermission();
-                }
-            }
-        });
-
-
+        btnPlayOnClickListener();
 
         /**
          * Chuyển bài hát tiếp theo
          * Nếu đi đến cuối danh sách phát thì phát bài hát đầu tiên
          **/
-        btnNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                position++;
-                if (position > songsManager.arraySong().size()-1){
-                    position = 0;
-                }
-                if(mediaPlayer.isPlaying()) {
-                    mediaPlayer.stop();
-                }
-                SetDataSource(position);
-                mediaPlayer.start();
-                SetTimeTotal();
-            }
-        });
-
+        btnNextOnClickListener();
 
         /**
          * Quay lại bài hát trước đó
          * Nếu đi đến đầu danh sách phát thì phát bài hát cuối cùng
          **/
-        btnPrevious.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                position--;
-                if (position < 0){
-                    position = songsManager.arraySong().size()-1;
-                }
-                if(mediaPlayer.isPlaying()) {
-                    mediaPlayer.stop();
-                }
-                SetDataSource(position);
-                mediaPlayer.start();
-                SetTimeTotal();
-            }
-        });
-
+        btnPreviousOnClickListener();
 
         /**
          * Lặp lại bài hát đang phát
          **/
-        btnRepeat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(isRepeat){
-                    isRepeat = false;
-                    Toast.makeText(getApplicationContext(), "Repeat is OFF", Toast.LENGTH_SHORT).show();
-                    btnRepeat.setImageResource(R.drawable.btn_repeat);
-                }else{
-                    isRepeat = true;
-                    isShuffle = false;
-                    Toast.makeText(getApplicationContext(), "Repeat is ON", Toast.LENGTH_SHORT).show();
-                    btnRepeat.setImageResource(R.drawable.repeat_press);
-                    btnShuffle.setImageResource(R.drawable.shuffle);
-                }
-            }
-        });
-
+        btnRepeatOnClickListener();
 
         /**
          * Phát ngẫu nhiên bài hát
          **/
-        btnShuffle.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(isShuffle){
-                    isShuffle = false;
-                    Toast.makeText(getApplicationContext(), "Shuffle is OFF", Toast.LENGTH_SHORT).show();
-                    btnShuffle.setImageResource(R.drawable.btn_shuffle);
-                }else{
-                    // make repeat to true
-                    isShuffle= true;
-                    Toast.makeText(getApplicationContext(), "Shuffle is ON", Toast.LENGTH_SHORT).show();
-                    // make shuffle to false
-                    isRepeat = false;
-                    btnShuffle.setImageResource(R.drawable.shuffle_press);
-                    btnRepeat.setImageResource(R.drawable.repeat);
-                }
-            }
-        });
+        btnShuffleOnClickListener();
+
         /**
          * Tiến trình chạy bài hát
          **/
+        songProgressBarOnSeekBarChangeListener();
+
+    }
+
+    private void songProgressBarOnSeekBarChangeListener() {
         songProgressBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
@@ -209,11 +112,117 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
         });
     }
 
+    private void btnShuffleOnClickListener() {
+        btnShuffle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isShuffle) {
+                    isShuffle = false;
+                    Toast.makeText(getApplicationContext(), "Shuffle is OFF", Toast.LENGTH_SHORT).show();
+                    btnShuffle.setImageResource(R.drawable.btn_shuffle);
+                } else {
+                    // make repeat to true
+                    isShuffle= true;
+                    Toast.makeText(getApplicationContext(), "Shuffle is ON", Toast.LENGTH_SHORT).show();
+                    // make shuffle to false
+                    isRepeat = false;
+                    btnShuffle.setImageResource(R.drawable.shuffle_press);
+                    btnRepeat.setImageResource(R.drawable.repeat);
+                }
+            }
+        });
+    }
+
+    private void btnRepeatOnClickListener() {
+        btnRepeat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (isRepeat) {
+                    isRepeat = false;
+                    Toast.makeText(getApplicationContext(), "Repeat is OFF", Toast.LENGTH_SHORT).show();
+                    btnRepeat.setImageResource(R.drawable.btn_repeat);
+                } else {
+                    isRepeat = true;
+                    isShuffle = false;
+                    Toast.makeText(getApplicationContext(), "Repeat is ON", Toast.LENGTH_SHORT).show();
+                    btnRepeat.setImageResource(R.drawable.repeat_press);
+                    btnShuffle.setImageResource(R.drawable.shuffle);
+                }
+            }
+        });
+    }
+
+    private void btnPreviousOnClickListener() {
+        btnPrevious.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                position--;
+                if (position < 0) {
+                    position = songsManager.arraySong().size()-1;
+                }
+                if (mediaPlayer.isPlaying()) {
+                    mediaPlayer.stop();
+                }
+                SetDataSource(position);
+                mediaPlayer.start();
+                SetTimeTotal();
+            }
+        });
+    }
+
+    private void btnNextOnClickListener() {
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                position++;
+                if (position > songsManager.arraySong().size()-1){
+                    position = 0;
+                }
+                if(mediaPlayer.isPlaying()) {
+                    mediaPlayer.stop();
+                }
+                SetDataSource(position);
+                mediaPlayer.start();
+                SetTimeTotal();
+            }
+        });
+    }
+
+    private void btnPlayOnClickListener() {
+        btnPlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (checkPermission()) {
+                    if(mediaPlayer.isPlaying()) {
+                        if(mediaPlayer != null)
+                        {
+                            mediaPlayer.pause();
+                            btnPlay.setImageResource(R.drawable.btn_play);
+                            cdDisc.clearAnimation();
+                        }
+                    }
+                    else {
+                        if(mediaPlayer != null) {
+                            mediaPlayer.start();
+                            cdDisc.startAnimation(animation);
+                            btnPlay.setImageResource(R.drawable.btn_pause);
+                            SetTimeTotal();
+                            UpdateTimeSong();
+                        }
+                    }
+                }
+                else {
+                    requestPermission();
+                }
+            }
+        });
+    }
+
     /**
      * Hàm lấy ID của các phần tử
      **/
     @SuppressLint("ResourceType")
-    private void AnhXa() {
+    private void anhXa() {
         cdDisc                   = (ImageView) findViewById(R.id.cdDisc);
         btnPlay                  = (ImageButton) findViewById(R.id.btnPlay);
         btnForward               = (ImageButton) findViewById(R.id.btnForward);

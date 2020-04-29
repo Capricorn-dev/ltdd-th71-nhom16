@@ -20,19 +20,30 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        /**
+         * Hàm lấy ID của các phần tử
+         **/
+        anhXa();
+        btnResOnClickListener();
 
-        final Intent intent = new Intent(this,PlayerActivity.class);
+    }
+
+    private void btnResOnClickListener() {
         final Intent Resintent = new Intent(this,ResActivity.class);
+
+        btnLoginOnClickListener();
+
+        btnRes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(Resintent);
+            }
+        });
+    }
+
+    private void btnLoginOnClickListener() {
+        final Intent intent = new Intent(this,PlayerActivity.class);
         final UserData userData = new UserData(this);
-
-
-
-        btnLogin = (Button) findViewById(R.id.btnLogin);
-        btnRes = (Button) findViewById(R.id.btnRes);
-        txtUserName = (EditText) findViewById(R.id.txtUserName);
-        txtPassword = (EditText) findViewById(R.id.txtPassword);
-
-
 
         btnLogin.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -61,13 +72,13 @@ public class MainActivity extends AppCompatActivity {
 
             }
         });
+    }
 
-        btnRes.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(Resintent);
-            }
-        });
+    private void anhXa() {
+        btnLogin    = (Button) findViewById(R.id.btnLogin);
+        btnRes      = (Button) findViewById(R.id.btnRes);
+        txtUserName = (EditText) findViewById(R.id.txtUserName);
+        txtPassword = (EditText) findViewById(R.id.txtPassword);
     }
 
     @Override
