@@ -20,11 +20,14 @@ public class ResActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_res);
 
-        final UserData dbUser = new UserData(this);
-        Username = (EditText) findViewById(R.id.txtUserName2);
-        PassWord = (EditText) findViewById(R.id.txtPassword2);
+        anhXa();
 
-        btnRes2 = (Button)  findViewById(R.id.btnRes2);
+        btnRes2OnClickListener();
+
+    }
+
+    private void btnRes2OnClickListener() {
+        final UserData dbUser = new UserData(this);
 
         btnRes2.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -48,6 +51,13 @@ public class ResActivity extends AppCompatActivity {
             }
         });
     }
+
+    private void anhXa() {
+        Username = (EditText) findViewById(R.id.txtUserName2);
+        PassWord = (EditText) findViewById(R.id.txtPassword2);
+        btnRes2  = (Button)  findViewById(R.id.btnRes2);
+    }
+
     private User createUser()
     {
         String UserName = Username.getText().toString();

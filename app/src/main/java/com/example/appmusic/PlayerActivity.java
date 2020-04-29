@@ -14,6 +14,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
@@ -47,16 +48,16 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
     int backwardTime        = 10000;
     MediaPlayer mediaPlayer = new MediaPlayer();
 
-
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_player);
-        AnhXa();
+
+        /**
+         * Hàm lấy ID của các phần tử
+         **/
+        anhXa();
+
         songsManager = new SongsManager();
         SetDataSource(position);
         mediaPlayer.setOnCompletionListener(this);
@@ -65,111 +66,65 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
         /**
          * Bắt đầu phát nhạc
          **/
-        btnPlay.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if (checkPermission()) {
-                    if(mediaPlayer.isPlaying()) {
-                        if(mediaPlayer != null)
-                        {
-                            mediaPlayer.pause();
-                            btnPlay.setImageResource(R.drawable.btn_play);
-                            cdDisc.clearAnimation();
-                        }
-                    }
-                    else {
-                        if(mediaPlayer != null) {
-                            mediaPlayer.start();
-                            //songTitleLabel.setText(songsManager.arraySong().get(position).get("songTitle"));
-                            cdDisc.startAnimation(animation);
-                            btnPlay.setImageResource(R.drawable.btn_pause);
-                            SetTimeTotal();
-                            UpdateTimeSong();
-                        }
-                    }
-                }
-                else {
-                    requestPermission();
-                }
-            }
-        });
-
-
+        btnPlayOnClickListener();
 
         /**
          * Chuyển bài hát tiếp theo
          * Nếu đi đến cuối danh sách phát thì phát bài hát đầu tiên
          **/
-        btnNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                position++;
-                if (position > songsManager.arraySong().size()-1){
-                    position = 0;
-                }
-                if(mediaPlayer.isPlaying()) {
-                    mediaPlayer.stop();
-                }
-                SetDataSource(position);
-                mediaPlayer.start();
-                SetTimeTotal();
-            }
-        });
-
+        btnNextOnClickListener();
 
         /**
          * Quay lại bài hát trước đó
          * Nếu đi đến đầu danh sách phát thì phát bài hát cuối cùng
          **/
-        btnPrevious.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                position--;
-                if (position < 0){
-                    position = songsManager.arraySong().size()-1;
-                }
-                if(mediaPlayer.isPlaying()) {
-                    mediaPlayer.stop();
-                }
-                SetDataSource(position);
-                mediaPlayer.start();
-                SetTimeTotal();
-            }
-        });
-
+        btnPreviousOnClickListener();
 
         /**
          * Lặp lại bài hát đang phát
          **/
-        btnRepeat.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                if(isRepeat){
-                    isRepeat = false;
-                    Toast.makeText(getApplicationContext(), "Repeat is OFF", Toast.LENGTH_SHORT).show();
-                    btnRepeat.setImageResource(R.drawable.btn_repeat);
-                }else{
-                    isRepeat = true;
-                    isShuffle = false;
-                    Toast.makeText(getApplicationContext(), "Repeat is ON", Toast.LENGTH_SHORT).show();
-                    btnRepeat.setImageResource(R.drawable.repeat_press);
-                    btnShuffle.setImageResource(R.drawable.shuffle);
-                }
-            }
-        });
-
+        btnRepeatOnClickListener();
 
         /**
          * Phát ngẫu nhiên bài hát
          **/
+        btnShuffleOnClickListener();
+
+        /**
+         * Tiến trình chạy bài hát
+         **/
+        songProgressBarOnSeekBarChangeListener();
+
+    }
+
+    private void songProgressBarOnSeekBarChangeListener() {
+        songProgressBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+
+            }
+
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar) {
+
+            }
+
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                mediaPlayer.seekTo(songProgressBar.getProgress());
+            }
+        });
+    }
+
+    private void btnShuffleOnClickListener() {
         btnShuffle.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(isShuffle){
+                if (isShuffle) {
                     isShuffle = false;
                     Toast.makeText(getApplicationContext(), "Shuffle is OFF", Toast.LENGTH_SHORT).show();
                     btnShuffle.setImageResource(R.drawable.btn_shuffle);
-                }else{
+                } else {
                     // make repeat to true
                     isShuffle= true;
                     Toast.makeText(getApplicationContext(), "Shuffle is ON", Toast.LENGTH_SHORT).show();
@@ -180,6 +135,8 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
                 }
             }
         });
+    }
+
 
 
         /**
@@ -222,16 +179,88 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
 
-            }
 
+    private void btnRepeatOnClickListener() {
+        btnRepeat.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onStartTrackingTouch(SeekBar seekBar) {
-
+            public void onClick(View v) {
+                if (isRepeat) {
+                    isRepeat = false;
+                    Toast.makeText(getApplicationContext(), "Repeat is OFF", Toast.LENGTH_SHORT).show();
+                    btnRepeat.setImageResource(R.drawable.btn_repeat);
+                } else {
+                    isRepeat = true;
+                    isShuffle = false;
+                    Toast.makeText(getApplicationContext(), "Repeat is ON", Toast.LENGTH_SHORT).show();
+                    btnRepeat.setImageResource(R.drawable.repeat_press);
+                    btnShuffle.setImageResource(R.drawable.shuffle);
+                }
             }
+        });
+    }
 
+    private void btnPreviousOnClickListener() {
+        btnPrevious.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onStopTrackingTouch(SeekBar seekBar) {
-                mediaPlayer.seekTo(songProgressBar.getProgress());
+            public void onClick(View v) {
+                position--;
+                if (position < 0) {
+                    position = songsManager.arraySong().size()-1;
+                }
+                if (mediaPlayer.isPlaying()) {
+                    mediaPlayer.stop();
+                }
+                SetDataSource(position);
+                mediaPlayer.start();
+                SetTimeTotal();
+            }
+        });
+    }
+
+    private void btnNextOnClickListener() {
+        btnNext.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                position++;
+                if (position > songsManager.arraySong().size()-1){
+                    position = 0;
+                }
+                if(mediaPlayer.isPlaying()) {
+                    mediaPlayer.stop();
+                }
+                SetDataSource(position);
+                mediaPlayer.start();
+                SetTimeTotal();
+            }
+        });
+    }
+
+    private void btnPlayOnClickListener() {
+        btnPlay.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (checkPermission()) {
+                    if(mediaPlayer.isPlaying()) {
+                        if(mediaPlayer != null)
+                        {
+                            mediaPlayer.pause();
+                            btnPlay.setImageResource(R.drawable.btn_play);
+                            cdDisc.clearAnimation();
+                        }
+                    }
+                    else {
+                        if(mediaPlayer != null) {
+                            mediaPlayer.start();
+                            cdDisc.startAnimation(animation);
+                            btnPlay.setImageResource(R.drawable.btn_pause);
+                            SetTimeTotal();
+                            UpdateTimeSong();
+                        }
+                    }
+                }
+                else {
+                    requestPermission();
+                }
             }
         });
     }
@@ -240,7 +269,7 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
      * Hàm lấy ID của các phần tử
      **/
     @SuppressLint("ResourceType")
-    private void AnhXa() {
+    private void anhXa() {
         cdDisc                   = (ImageView) findViewById(R.id.cdDisc);
         btnPlay                  = (ImageButton) findViewById(R.id.btnPlay);
         btnForward               = (ImageButton) findViewById(R.id.btnForward);

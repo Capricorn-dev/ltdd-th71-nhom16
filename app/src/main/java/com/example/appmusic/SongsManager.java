@@ -9,13 +9,13 @@ import java.util.HashMap;
 public class SongsManager {
     final String MEDIA_PATH = new String("/sdcard/Download/");
     private ArrayList<HashMap<String, String>> arraySong = new ArrayList<HashMap<String, String>>();
+
     @SuppressLint("SdCardPath")
-    public ArrayList<HashMap<String, String>> arraySong()
-    {
+    public ArrayList<HashMap<String, String>> arraySong() {
         File file = new File(MEDIA_PATH);
         File[] list = file.listFiles();
-        if(list !=null)
-        {
+
+        if (list !=null) {
             for (File value : list) {
                 if (value.getName().endsWith(".mp3")) {
                     HashMap<String, String> songMap = new HashMap<String, String>();
