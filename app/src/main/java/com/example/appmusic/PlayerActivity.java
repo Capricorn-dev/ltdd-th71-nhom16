@@ -95,6 +95,43 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
          **/
         songProgressBarOnSeekBarChangeListener();
 
+        /**
+         * Tua nhanh 10s
+         **/
+        btnForwardOnClickListener();
+        /**
+         * Tua lùi 10s
+         **/
+        btnBackwardOnClickListener();
+        
+    }
+
+    private void btnBackwardOnClickListener() {
+        btnBackward.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int currentPosition = mediaPlayer.getCurrentPosition();
+                if (currentPosition - backwardTime >= 0){
+                    mediaPlayer.seekTo(currentPosition - backwardTime);
+                }else {
+                    mediaPlayer.seekTo(0);
+                }
+            }
+        });
+    }
+
+    private void btnForwardOnClickListener() {
+        btnForward.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int currentPosition = mediaPlayer.getCurrentPosition();
+                if (currentPosition + forwardTime <= mediaPlayer.getDuration()){
+                    mediaPlayer.seekTo(currentPosition + forwardTime);
+                }else {
+                    mediaPlayer.seekTo(mediaPlayer.getDuration());
+                }
+            }
+        });
     }
 
     private void songProgressBarOnSeekBarChangeListener() {
@@ -136,49 +173,6 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
             }
         });
     }
-
-
-
-        /**
-         * Tua nhanh 10s
-         **/
-        btnForward.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int currentPosition = mediaPlayer.getCurrentPosition();
-                if (currentPosition + forwardTime <= mediaPlayer.getDuration()){
-                    mediaPlayer.seekTo(currentPosition + forwardTime);
-                }else {
-                    mediaPlayer.seekTo(mediaPlayer.getDuration());
-                }
-            }
-        });
-
-
-        /**
-         * Tua lùi 10s
-         **/
-        btnBackward.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                int currentPosition = mediaPlayer.getCurrentPosition();
-                if (currentPosition - backwardTime >= 0){
-                    mediaPlayer.seekTo(currentPosition - backwardTime);
-                }else {
-                    mediaPlayer.seekTo(0);
-                }
-            }
-        });
-
-
-
-        /**
-         * Tiến trình chạy bài hát
-         **/
-        songProgressBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
-            @Override
-            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
-
 
     private void btnRepeatOnClickListener() {
         btnRepeat.setOnClickListener(new View.OnClickListener() {
