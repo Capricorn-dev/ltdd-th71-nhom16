@@ -15,7 +15,6 @@ public class SongsManager {
         File file = new File(MEDIA_PATH);
         File[] list = file.listFiles();
         if(list !=null)
-
         {
             for (File value : list) {
                 if (value.getName().endsWith(".mp3")) {
@@ -25,12 +24,10 @@ public class SongsManager {
                     arraySong.add(songMap);
                 }
             }
-        } else
-
-        {
+        } else {
             HashMap<String, String> songMap = new HashMap<String, String>();
             songMap.put("songTitle", "Error");
-            songMap.put("songPath", "Error");
+            songMap.put("songPath", null);
             arraySong.add(songMap);
         }
         return arraySong;

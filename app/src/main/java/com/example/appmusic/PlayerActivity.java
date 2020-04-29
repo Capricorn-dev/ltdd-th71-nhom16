@@ -1,18 +1,10 @@
 package com.example.appmusic;
 
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-
 import android.annotation.SuppressLint;
-import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
-import android.os.Build;
 import android.os.Bundle;
-import android.os.Environment;
 import android.os.Handler;
-import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -21,17 +13,16 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
-import android.media.MediaPlayer.OnCompletionListener;
-import java.io.File;
+
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
+
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.Objects;
 import java.util.Random;
 
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
-import static android.Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
 public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnCompletionListener {
     ImageView cdDisc;
@@ -44,14 +35,16 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
     private ImageButton btnPlaylist;
     private ImageButton btnRepeat;
     private ImageButton btnShuffle;
-    private SeekBar songProgressBar;
-    private TextView songTitleLabel;
-    private TextView songCurrentDurationLabel;
-    private TextView songTotalDurationLabel;
+    private SeekBar     songProgressBar;
+    private TextView    songTitleLabel;
+    private TextView    songCurrentDurationLabel;
+    private TextView    songTotalDurationLabel;
     private SongsManager songsManager;
-    boolean isRepeat = false;
-    boolean isShuffle = false;
-    int position = 0;
+    boolean isRepeat        = false;
+    boolean isShuffle       = false;
+    int position            = 0;
+    int forwardTime         = 10000;
+    int backwardTime        = 10000;
     MediaPlayer mediaPlayer = new MediaPlayer();
 
 
@@ -67,7 +60,6 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
         songsManager = new SongsManager();
         SetDataSource(position);
         mediaPlayer.setOnCompletionListener(this);
-
 
 
         /**
@@ -188,6 +180,41 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
                 }
             }
         });
+
+
+        /**
+         * Tua nhanh 10s
+         **/
+        btnForward.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int currentPosition = mediaPlayer.getCurrentPosition();
+                if (currentPosition + forwardTime <= mediaPlayer.getDuration()){
+                    mediaPlayer.seekTo(currentPosition + forwardTime);
+                }else {
+                    mediaPlayer.seekTo(mediaPlayer.getDuration());
+                }
+            }
+        });
+
+
+        /**
+         * Tua lùi 10s
+         **/
+        btnBackward.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                int currentPosition = mediaPlayer.getCurrentPosition();
+                if (currentPosition - backwardTime >= 0){
+                    mediaPlayer.seekTo(currentPosition - backwardTime);
+                }else {
+                    mediaPlayer.seekTo(0);
+                }
+            }
+        });
+
+
+
         /**
          * Tiến trình chạy bài hát
          **/
@@ -305,7 +332,7 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
             mediaPlayer.start();
         }else if(isShuffle){
             Random rand = new Random();
-            position = rand.nextInt((songsManager.arraySong().size() - 1) - 0 + 1);
+            position = rand.nextInt(songsManager.arraySong().size());
             SetDataSource(position);
             mediaPlayer.start();
             SetTimeTotal();
