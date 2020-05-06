@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
                 {
                     Toast.makeText(getApplicationContext(),"Username hoặc Password không hợp lệ" , Toast.LENGTH_SHORT).show();
                 }
-
+                finish();
             }
         });
     }

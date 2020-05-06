@@ -1,6 +1,7 @@
 package com.example.appmusic;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
 import android.os.Bundle;
@@ -21,6 +22,8 @@ import androidx.core.content.ContextCompat;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Random;
 
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
@@ -47,6 +50,7 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
     int forwardTime         = 10000;
     int backwardTime        = 10000;
     MediaPlayer mediaPlayer = new MediaPlayer();
+    private ArrayList<HashMap<String, String>> songsList = new ArrayList<HashMap<String, String>>();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +65,7 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
         songsManager = new SongsManager();
         SetDataSource(position);
         mediaPlayer.setOnCompletionListener(this);
-
+        songsList = songsManager.arraySong();
 
         /**
          * Bắt đầu phát nhạc
@@ -90,20 +94,36 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
          **/
         btnShuffleOnClickListener();
 
-        /**
-         * Tiến trình chạy bài hát
-         **/
-        songProgressBarOnSeekBarChangeListener();
+
+        btnPlaylistOnClickListener();
 
         /**
          * Tua nhanh 10s
          **/
         btnForwardOnClickListener();
+
         /**
          * Tua lùi 10s
          **/
         btnBackwardOnClickListener();
+
+        /**
+         * Tiến trình chạy bài hát
+         **/
+        songProgressBarOnSeekBarChangeListener();
+
         
+    }
+
+    private void btnPlaylistOnClickListener() {
+        btnPlaylist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(getApplicationContext(), PlayListActivity.class);
+                startActivityForResult(i, 100);
+            }
+        });
+
     }
 
     private void btnBackwardOnClickListener() {
@@ -206,6 +226,7 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
                 }
                 SetDataSource(position);
                 mediaPlayer.start();
+                btnPlay.setImageResource(R.drawable.btn_pause);
                 SetTimeTotal();
             }
         });
@@ -224,6 +245,7 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
                 }
                 SetDataSource(position);
                 mediaPlayer.start();
+                btnPlay.setImageResource(R.drawable.btn_pause);
                 SetTimeTotal();
             }
         });
@@ -258,6 +280,7 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
             }
         });
     }
+
 
     /**
      * Hàm lấy ID của các phần tử
@@ -370,6 +393,27 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
             SetDataSource(position);
             mediaPlayer.start();
             SetTimeTotal();
+        }
+
+    }
+
+
+    /**
+     * Nhận index từ Playlist và phát bài hát
+     * */
+    @Override
+    protected void onActivityResult(int requestCode,
+                                    int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == 100){
+            position = data.getExtras().getInt("songIndex");
+            // play selected song
+            SetDataSource(position);
+            mediaPlayer.start();
+            cdDisc.startAnimation(animation);
+            btnPlay.setImageResource(R.drawable.btn_pause);
+            SetTimeTotal();
+            UpdateTimeSong();
         }
 
     }
