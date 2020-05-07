@@ -32,4 +32,22 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'org.jetbrains:annotations-java5:15.0'
+
+    dependencies {
+        //noinspection GradleDeprecatedConfiguration
+        compile 'me.relex:circleindicator:1.2.2@aar'
+    }
+
+    dependencies {
+        //noinspection GradleDeprecatedConfiguration
+        compile 'com.eftimoff:android-viewpager-transformers:1.0.1@aar'
+    }
+
+    //noinspection GradleCompatible
+    implementation 'com.android.support:cardview-v7:26.1.0'
+    //noinspection GradleCompatible
+    implementation 'com.android.support:recyclerview-v7:26.1.0'
+    //noinspection GradleCompatible
+    implementation 'com.android.support:design:27.0.2'
+    implementation 'de.hdodenhof:circleimageview:2.2.0'
 }
