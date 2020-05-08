@@ -32,7 +32,6 @@ public class PlayListActivity extends ListActivity {
                 R.layout.playlist_item, new String[] { "songTitle" }, new int[] {
                 R.id.songTitle });
         setListAdapter(adapter);
-
         ListView lv = getListView();
         lv.setOnItemClickListener(new OnItemClickListener() {
             @Override

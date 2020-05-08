@@ -29,20 +29,20 @@ import java.util.Random;
 import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 
 public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnCompletionListener {
-    ImageView cdDisc;
-    Animation animation;
-    private ImageButton btnPlay;
-    private ImageButton btnForward;
-    private ImageButton btnBackward;
-    private ImageButton btnNext;
-    private ImageButton btnPrevious;
-    private ImageButton btnPlaylist;
-    private ImageButton btnRepeat;
-    private ImageButton btnShuffle;
-    private SeekBar     songProgressBar;
-    private TextView    songTitleLabel;
-    private TextView    songCurrentDurationLabel;
-    private TextView    songTotalDurationLabel;
+    private ImageView    cdDisc;
+    private Animation    animation;
+    private ImageButton  btnPlay;
+    private ImageButton  btnForward;
+    private ImageButton  btnBackward;
+    private ImageButton  btnNext;
+    private ImageButton  btnPrevious;
+    private ImageButton  btnPlaylist;
+    private ImageButton  btnRepeat;
+    private ImageButton  btnShuffle;
+    private SeekBar      songProgressBar;
+    private TextView     songTitleLabel;
+    private TextView     songCurrentDurationLabel;
+    private TextView     songTotalDurationLabel;
     private SongsManager songsManager;
     boolean isRepeat        = false;
     boolean isShuffle       = false;
@@ -94,7 +94,9 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
          **/
         btnShuffleOnClickListener();
 
-
+        /**
+         * Mở danh sách bài
+         **/
         btnPlaylistOnClickListener();
 
         /**
@@ -417,5 +419,9 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
         }
 
     }
-
+    @Override
+    public void onDestroy(){
+        super.onDestroy();
+        mediaPlayer.release();
+    }
 }
