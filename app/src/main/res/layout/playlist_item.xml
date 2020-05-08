@@ -1,17 +1,26 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="75dp"
+    android:layout_height="90dp"
     android:orientation="horizontal"
     android:gravity="center"
     android:padding="5dp">
+
+        <ImageView
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:layout_marginEnd="5dp"
+            android:background="@drawable/music"
+            android:backgroundTint="#0090f7" />
         <TextView
             android:id="@+id/songTitle"
-            android:layout_width="match_parent"
+            android:layout_width="322dp"
             android:layout_height="match_parent"
-            android:textColor="#0205b5"
+            android:background="@drawable/rounded"
             android:padding="10dp"
-            android:textStyle="bold"
-            android:textSize="20dp"/>
+            android:textAlignment="gravity"
+            android:gravity="center_vertical"
+            android:textColor="#ffffff"
+            android:textSize="16dp" />
 </LinearLayout>
 
