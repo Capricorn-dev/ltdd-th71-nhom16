@@ -2,7 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.appmusic">
 
-
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -11,17 +11,19 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".PlayListActivity"/>
-        <activity android:name=".PlayerActivity"/>
+
+        <activity android:name=".MainActivity"></activity>
+        <activity android:name=".PlayListActivity" />
+        <activity android:name=".PlayerActivity" />
         <activity android:name=".ResActivity" />
-        <activity android:name=".Main2Activity"/>
-        <activity android:name=".MainActivity">
+        <activity android:name=".Main2Activity" />
+        <activity android:name="activity.HomePage">
+
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
     </application>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
 
 </manifest>
