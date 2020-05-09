@@ -12,6 +12,8 @@ import android.widget.Toast;
 import com.example.appmusic.Database.User;
 import com.example.appmusic.Database.UserData;
 
+import activity.HomePage;
+
 public class MainActivity extends AppCompatActivity {
     private Button btnLogin, btnRes;
     private EditText txtUserName, txtPassword;
@@ -42,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void btnLoginOnClickListener() {
-        final Intent intent = new Intent(this,PlayerActivity.class);
+        final Intent intent = new Intent(this, HomePage.class);
         final UserData userData = new UserData(this);
 
         btnLogin.setOnClickListener(new View.OnClickListener() {

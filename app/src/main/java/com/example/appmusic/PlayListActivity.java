@@ -14,6 +14,8 @@ import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.SimpleAdapter;
 
+import fragment.Fragment_Trinh_Phat;
+
 public class PlayListActivity extends ListActivity {
     public ArrayList<HashMap<String, String>> songsList = new ArrayList<HashMap<String, String>>();
     @Override
@@ -38,7 +40,7 @@ public class PlayListActivity extends ListActivity {
             public void onItemClick(AdapterView<?> parent, View view,
                                     int position, long id) {
                 int songIndex = position;
-                Intent in = new Intent(getApplicationContext(),PlayerActivity.class);
+                Intent in = new Intent(getApplicationContext(), Fragment_Trinh_Phat.class);
                 in.putExtra("songIndex", songIndex);
                 setResult(100, in);
                 finish();
