@@ -21,12 +21,14 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        getSupportActionBar().hide();
 
         /**
          * Hàm lấy ID của các phần tử
          **/
         anhXa();
         btnResOnClickListener();
+        btnLoginOnClickListener();
 
     }
 
@@ -71,7 +73,6 @@ public class MainActivity extends AppCompatActivity {
                 {
                     Toast.makeText(getApplicationContext(),"Username hoặc Password không hợp lệ" , Toast.LENGTH_SHORT).show();
                 }
-                finish();
             }
         });
     }
@@ -83,8 +84,4 @@ public class MainActivity extends AppCompatActivity {
         txtPassword = (EditText) findViewById(R.id.txtPassword);
     }
 
-    @Override
-    public void onDestroy(){
-        super.onDestroy();
-    }
 }

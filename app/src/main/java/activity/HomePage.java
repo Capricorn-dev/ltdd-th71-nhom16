@@ -28,7 +28,6 @@ public class HomePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
-
         andXa();
         init();
         requestPermission();
@@ -37,13 +36,14 @@ public class HomePage extends AppCompatActivity {
     private void init() {
         MainViewFragmentAdapter adapter = new MainViewFragmentAdapter(getSupportFragmentManager());
 
-        adapter.addFragment(new Fragment_Trang_Chu(), "Trang chủ");
-        adapter.addFragment(new Fragment_Trinh_Phat(), "Trình phát nhạc");
-        adapter.addFragment(new Fragment_Thu_Vien(), "Thư viện bài hát");
-        adapter.addFragment(new Fragment_Ca_Nhan(), "Cá nhân");
+        adapter.addFragment(new Fragment_Trang_Chu(), "Home");
+        adapter.addFragment(new Fragment_Trinh_Phat(), "Player");
+        adapter.addFragment(new Fragment_Thu_Vien(), "Libary");
+        adapter.addFragment(new Fragment_Ca_Nhan(), "Personal");
 
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
+
         tabLayout.getTabAt(0).setIcon(R.drawable.home);
         tabLayout.getTabAt(1).setIcon(R.drawable.player);
         tabLayout.getTabAt(2).setIcon(R.drawable.libary);
@@ -70,8 +70,5 @@ public class HomePage extends AppCompatActivity {
     public boolean checkPermission(){
         int result = ContextCompat.checkSelfPermission(getApplicationContext(), READ_EXTERNAL_STORAGE);
         return result == PackageManager.PERMISSION_GRANTED;
-
     }
-
-
 }

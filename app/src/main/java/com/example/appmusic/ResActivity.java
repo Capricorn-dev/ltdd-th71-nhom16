@@ -19,7 +19,7 @@ public class ResActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_res);
-
+        getSupportActionBar().hide();
         anhXa();
 
         btnRes2OnClickListener();
