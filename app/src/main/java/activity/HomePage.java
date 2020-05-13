@@ -62,13 +62,4 @@ public class HomePage extends AppCompatActivity {
         ActivityCompat.requestPermissions(HomePage.this, new
                 String[]{READ_EXTERNAL_STORAGE}, requestPermissionCode);
     }
-
-
-    /**
-     * Hàm kiểm tra việc cấp quyền truy cập SDcard
-     **/
-    public boolean checkPermission(){
-        int result = ContextCompat.checkSelfPermission(getApplicationContext(), READ_EXTERNAL_STORAGE);
-        return result == PackageManager.PERMISSION_GRANTED;
-    }
 }

@@ -8,7 +8,7 @@ import java.util.HashMap;
 
 public class SongsManager {
     final String MEDIA_PATH = new String("/sdcard/Download/");
-    private ArrayList<HashMap<String, String>> arraySong = new ArrayList<HashMap<String, String>>();
+    public ArrayList<HashMap<String, String>> arraySong = new ArrayList<HashMap<String, String>>();
 
     @SuppressLint("SdCardPath")
     public ArrayList<HashMap<String, String>> arraySong() {

@@ -258,13 +258,9 @@ public class Fragment_Trinh_Phat extends Fragment implements MediaPlayer.OnCompl
             public void onClick(View v) {
                 if (isShuffle) {
                     isShuffle = false;
-                    Toast.makeText(getContext(), "Shuffle is OFF", Toast.LENGTH_SHORT).show();
                     btnShuffle.setImageResource(R.drawable.btn_shuffle);
                 } else {
-                    // make repeat to true
                     isShuffle= true;
-                    Toast.makeText(getContext(), "Shuffle is ON", Toast.LENGTH_SHORT).show();
-                    // make shuffle to false
                     isRepeat = false;
                     btnShuffle.setImageResource(R.drawable.shuffle_press);
                     btnRepeat.setImageResource(R.drawable.repeat);
@@ -279,12 +275,10 @@ public class Fragment_Trinh_Phat extends Fragment implements MediaPlayer.OnCompl
             public void onClick(View v) {
                 if (isRepeat) {
                     isRepeat = false;
-                    Toast.makeText(getContext(), "Repeat is OFF", Toast.LENGTH_SHORT).show();
                     btnRepeat.setImageResource(R.drawable.btn_repeat);
                 } else {
                     isRepeat = true;
                     isShuffle = false;
-                    Toast.makeText(getContext(), "Repeat is ON", Toast.LENGTH_SHORT).show();
                     btnRepeat.setImageResource(R.drawable.repeat_press);
                     btnShuffle.setImageResource(R.drawable.shuffle);
                 }
