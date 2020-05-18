@@ -14,7 +14,6 @@
 
         <activity android:name=".MainActivity"/>
         <activity android:name=".PlayListActivity" />
-        <activity android:name=".PlayerActivity" />
         <activity android:name=".ResActivity" />
         <activity android:name=".Main2Activity" />
         <activity android:name="activity.HomePage">

@@ -66,7 +66,6 @@ public class Fragment_Trinh_Phat extends Fragment implements MediaPlayer.OnCompl
     int forwardTime         = 10000;
     int backwardTime        = 10000;
     MediaPlayer mediaPlayer = new MediaPlayer();
-    private ArrayList<HashMap<String, String>> songsList = new ArrayList<HashMap<String, String>>();
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -76,7 +75,6 @@ public class Fragment_Trinh_Phat extends Fragment implements MediaPlayer.OnCompl
         mediaPlayer.setOnCompletionListener(this);
         songsManager = new SongsManager();
         SetDataSource(position);
-        songsList = songsManager.arraySong();
         anhXa();
 
 
@@ -407,5 +405,10 @@ public class Fragment_Trinh_Phat extends Fragment implements MediaPlayer.OnCompl
             mediaPlayer.start();
             SetTimeTotal();
         }
+    }
+    @Override
+    public void onDestroy() {
+        mediaPlayer.release();
+        super.onDestroy();
     }
 }

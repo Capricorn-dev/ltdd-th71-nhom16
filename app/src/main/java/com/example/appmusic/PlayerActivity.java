@@ -1,6 +1,7 @@
 package com.example.appmusic;
 
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.MediaPlayer;
@@ -63,8 +64,6 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
         songsManager = new SongsManager();
         SetDataSource(position);
         mediaPlayer.setOnCompletionListener(this);
-        ArrayList<HashMap<String, String>> songsList = songsManager.arraySong();
-
         /**
          * Bắt đầu phát nhạc
          **/
@@ -112,13 +111,29 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
          **/
         songProgressBarOnSeekBarChangeListener();
 
-        
+    }
+    /**
+     * Nhận index từ Playlist và phát bài hát
+     * */
+    @Override
+    protected void onActivityResult(int requestCode,
+                                    int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if(resultCode == 100){
+            position = data.getExtras().getInt("songIndex");
+            SetDataSource(position);
+            mediaPlayer.start();
+            cdDisc.startAnimation(animation);
+            btnPlay.setImageResource(R.drawable.btn_pause);
+            SetTimeTotal();
+            UpdateTimeSong();
+        }
     }
 
     private void btnPlaylistOnClickListener() {
         btnPlaylist.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View arg0) {
                 Intent i = new Intent(getApplicationContext(), PlayListActivity.class);
                 startActivityForResult(i, 100);
             }
@@ -257,21 +272,16 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
             public void onClick(View v) {
                 if (checkPermission()) {
                     if(mediaPlayer.isPlaying()) {
-                        if(mediaPlayer != null)
-                        {
                             mediaPlayer.pause();
                             btnPlay.setImageResource(R.drawable.btn_play);
                             cdDisc.clearAnimation();
-                        }
                     }
                     else {
-                        if(mediaPlayer != null) {
                             mediaPlayer.start();
                             cdDisc.startAnimation(animation);
                             btnPlay.setImageResource(R.drawable.btn_pause);
                             SetTimeTotal();
                             UpdateTimeSong();
-                        }
                     }
                 }
                 else {
@@ -331,7 +341,7 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
         try{
             mediaPlayer.reset();
             mediaPlayer.setDataSource(songsManager.arraySong().get(songIndex).get("songPath"));
-            songTitleLabel.setText(songsManager.arraySong().get(position).get("songTitle"));
+            songTitleLabel.setText(songsManager.arraySong().get(songIndex).get("songTitle"));
             mediaPlayer.prepare();
         } catch (IllegalArgumentException | IllegalStateException | IOException e) {
             e.printStackTrace();
@@ -394,31 +404,5 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
             mediaPlayer.start();
             SetTimeTotal();
         }
-
-    }
-
-
-    /**
-     * Nhận index từ Playlist và phát bài hát
-     * */
-    @Override
-    protected void onActivityResult(int requestCode,
-                                    int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if(resultCode == 100){
-            position = data.getExtras().getInt("songIndex");
-            // play selected song
-            SetDataSource(position);
-            mediaPlayer.start();
-            cdDisc.startAnimation(animation);
-            btnPlay.setImageResource(R.drawable.btn_pause);
-            SetTimeTotal();
-            UpdateTimeSong();
-        }
-    }
-    @Override
-    public void onDestroy(){
-        super.onDestroy();
-        mediaPlayer.release();
     }
 }
