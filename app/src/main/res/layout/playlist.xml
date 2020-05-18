@@ -21,7 +21,7 @@
                 android:layout_height="match_parent"
                 android:layout_gravity="bottom"
                 android:divider="#e3e3e3"
-                android:background="#525252"
+                android:background="@drawable/playerbg_2"
                 android:dividerHeight="2dp"
                 />
         </LinearLayout>

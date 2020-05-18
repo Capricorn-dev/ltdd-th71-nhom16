@@ -7,8 +7,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 public class SongsManager {
-    final String MEDIA_PATH = new String("/sdcard/Download/");
-    public ArrayList<HashMap<String, String>> arraySong = new ArrayList<HashMap<String, String>>();
+    private final String MEDIA_PATH = new String("/sdcard/Download/");
+    private ArrayList<HashMap<String, String>> arraySong = new ArrayList<HashMap<String, String>>();
 
     @SuppressLint("SdCardPath")
     public ArrayList<HashMap<String, String>> arraySong() {
@@ -24,11 +24,6 @@ public class SongsManager {
                     arraySong.add(songMap);
                 }
             }
-        } else {
-            HashMap<String, String> songMap = new HashMap<String, String>();
-            songMap.put("songTitle", "Error");
-            songMap.put("songPath", null);
-            arraySong.add(songMap);
         }
         return arraySong;
     }

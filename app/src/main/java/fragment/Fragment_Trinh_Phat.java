@@ -266,7 +266,13 @@ public class Fragment_Trinh_Phat extends Fragment implements MediaPlayer.OnCompl
                     isShuffle= true;
                     isRepeat = false;
                     btnShuffle.setImageResource(R.drawable.shuffle_press);
+                    Toast.makeText(getContext(), "SHUFFLE IS ON", Toast.LENGTH_SHORT).show();
                     btnRepeat.setImageResource(R.drawable.repeat);
+                }
+                if(isRepeat){
+                    Toast.makeText(getContext(), "SHUFFLE IS ON", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(getContext(), "SHUFFLE IS OFF", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -283,7 +289,13 @@ public class Fragment_Trinh_Phat extends Fragment implements MediaPlayer.OnCompl
                     isRepeat = true;
                     isShuffle = false;
                     btnRepeat.setImageResource(R.drawable.repeat_press);
+
                     btnShuffle.setImageResource(R.drawable.shuffle);
+                }
+                if(isRepeat){
+                    Toast.makeText(getContext(), "REPEAT IS ON", Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(getContext(), "REPEAT IS OFF", Toast.LENGTH_SHORT).show();
                 }
             }
         });

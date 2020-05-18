@@ -11,6 +11,7 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.SimpleAdapter;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.example.appmusic.PlayListActivity;
 import com.example.appmusic.R;
@@ -21,27 +22,27 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import java.util.Objects;
 
 import fragment.Fragment_Trinh_Phat;
 import model.model;
 
-public class ListViewAdapter extends SimpleAdapter {
-    LayoutInflater inflater;
-    Context context;
-    ArrayList<HashMap<String, String>> data;
-    int resource;
-    String[] from;
-    int[] to;
+public class ListViewAdapter extends BaseAdapter {
+    private LayoutInflater inflater;
+    private Context context;
+    private ArrayList<HashMap<String, String>> data;
+    private int resource;
+    private String[] from;
+    private int[] to;
+    private ArrayList<HashMap<String, String>> temp;
 
 
 
-    public ListViewAdapter(Context context,  ArrayList<HashMap<String, String>> data, int resource, String[] from, int[] to) {
-        super(context, data, resource, from, to);
+    public ListViewAdapter(Context context,  ArrayList<HashMap<String, String>> data) {
         this.context=context;
         this.data = data;
-        this.resource = resource;
-        this.from = from;
-        this.to = to;
+        this.temp = new ArrayList<HashMap<String, String>>();
+        this.temp.addAll(data);
         inflater = LayoutInflater.from(context);
     }
 
@@ -51,42 +52,56 @@ public class ListViewAdapter extends SimpleAdapter {
     }
 
     @Override
-    public int getCount() { return 0;
+    public int getCount() { return data.size();
     }
 
     @Override
     public Object getItem(int position) {
-        return 0;
+        return data.get(position).get("songIndex");
     }
 
     @Override
     public long getItemId(int position) {
-        return 0;
+        return position;
     }
 
     @Override
     public View getView(final int position, View view, ViewGroup parent) {
-        ViewHolder Holder;
+        ViewHolder holder;
         if (view == null){
-            Holder = new ViewHolder();
+            holder = new ViewHolder();
             view = inflater.inflate(R.layout.playlist_item,null);
 
-            Holder.title.findViewById(R.id.songTitle);
-            Holder.title.findViewById(R.id.icon);
-            view.setTag(Holder);
+            holder.title = view.findViewById(R.id.songTitle);
+
+            view.setTag(holder);
         }else {
-            Holder = (ViewHolder)view.getTag();
+            holder = (ViewHolder)view.getTag();
         }
-        Holder.title.setText(from[position]);
-        final View finalView = view;
+        holder.title.setText(data.get(position).get("songTitle"));
+
+
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent in = new Intent(context, Fragment_Trinh_Phat.class);
-                in.putExtra("songIndex", position);
-                context.startActivity(in);
+                Toast.makeText(context, data.get(position).get("songTitle"), Toast.LENGTH_SHORT).show();
             }
         });
         return view;
+    }
+    public void filter(String charText){
+        charText = charText.toLowerCase(Locale.getDefault());
+        data.clear();
+        if (charText.length() == 0){
+            data.addAll(temp);
+        }
+        else {
+            for(HashMap<String, String> item: temp){
+                if(Objects.requireNonNull(item.get("songTitle")).toLowerCase(Locale.getDefault()).contains(charText)){
+                    data.add(item);
+                }
+            }
+        }
+        notifyDataSetChanged();
     }
 }

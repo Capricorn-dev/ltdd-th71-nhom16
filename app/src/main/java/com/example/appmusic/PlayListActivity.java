@@ -2,11 +2,14 @@ package com.example.appmusic;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Objects;
+import java.util.SimpleTimeZone;
 
 import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -28,7 +31,7 @@ import fragment.Fragment_Trinh_Phat;
 public class PlayListActivity extends AppCompatActivity {
     public ArrayList<HashMap<String, String>> songsList = new ArrayList<HashMap<String, String>>();
     private ArrayList<HashMap<String, String>> songsListData = new ArrayList<HashMap<String, String>>();
-    private SimpleAdapter adapter;
+    private ListViewAdapter adapter;
     private ListView lv;
 
 
@@ -37,14 +40,14 @@ public class PlayListActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.playlist);
 
+        Objects.requireNonNull(getSupportActionBar()).setTitle("Playlist");
+
         SongsManager plm = new SongsManager();
         songsList = plm.arraySong();
         lv = (ListView) findViewById(R.id.listview);
 
         songsListData.addAll(songsList);
-        adapter = new SimpleAdapter(this, songsListData,
-                R.layout.playlist_item, new String[] { "songTitle" }, new int[] {
-                R.id.songTitle });
+        adapter = new ListViewAdapter(PlayListActivity.this, songsListData);
         lv.setAdapter(adapter);
         lv.setOnItemClickListener(new OnItemClickListener() {
             @Override
@@ -67,6 +70,7 @@ public class PlayListActivity extends AppCompatActivity {
         inflater.inflate(R.menu.search, menu);
         MenuItem item = menu.findItem(R.id.search);
         final SearchView searchView = (SearchView) item.getActionView();
+        searchView.setQueryHint("Search....");
 
         searchView.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
@@ -76,7 +80,7 @@ public class PlayListActivity extends AppCompatActivity {
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                adapter.getFilter().filter(newText);
+                adapter.filter(newText);
                 return true;
             }
         });
