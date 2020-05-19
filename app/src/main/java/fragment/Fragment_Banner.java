@@ -52,6 +52,7 @@ public class Fragment_Banner extends Fragment {
         songBanners = new ArrayList<>();
         bannerAdapter = new BannerAdapter(getActivity(), songBanners);
         bannerAdapter.addSong();
+
         viewPager.setAdapter(bannerAdapter);
         circleIndicator.setViewPager(viewPager);
 
@@ -67,14 +68,14 @@ public class Fragment_Banner extends Fragment {
             public void run() {
                 currentItem = viewPager.getCurrentItem();
                 currentItem++;
-                if (currentItem > viewPager.getAdapter().getCount()) {
+                if (currentItem >= viewPager.getAdapter().getCount()) {
                     currentItem = 0;
                 }
                 viewPager.setCurrentItem(currentItem, true);
-                handler.postDelayed(runnable,5000);
+                handler.postDelayed(runnable,10000);
             }
         };
-        handler.postDelayed(runnable, 5000);
+        handler.postDelayed(runnable, 10000);
     }
 
     private void andXa() {
