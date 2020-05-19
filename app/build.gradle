@@ -50,4 +50,5 @@ dependencies {
     //noinspection GradleCompatible
     implementation 'com.android.support:design:27.0.2'
     implementation 'de.hdodenhof:circleimageview:2.2.0'
+    compile 'com.squareup.picasso:picasso:2.5.2'
 }
