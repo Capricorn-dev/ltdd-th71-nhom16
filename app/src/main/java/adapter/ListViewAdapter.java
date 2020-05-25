@@ -87,8 +87,6 @@ public class ListViewAdapter extends BaseAdapter {
             holder = (ViewHolder)view.getTag();
         }
         holder.title.setText(data.get(position).get("songTitle"));
-
-
         view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

@@ -13,7 +13,6 @@
         android:layout_height="90dp"
         android:layout_alignParentBottom="true"
         android:layout_marginTop="584dp"
-        android:background="@layout/bg_player_footer"
         android:gravity="center"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -29,7 +28,9 @@
             android:gravity="center_vertical"
             android:orientation="horizontal"
             android:paddingLeft="10dp"
-            android:paddingRight="10dp">
+            android:paddingRight="10dp"
+            android:layout_alignParentBottom="true"
+            >
             <!-- Previous Button -->
             <ImageButton
                 android:id="@+id/btnPrevious"
@@ -38,7 +39,7 @@
                 android:background="@drawable/rounded_button_2"
                 android:padding="3dp"
                 android:layout_marginStart="25dp"
-                android:src="@drawable/btn_previous" />
+                android:src="@drawable/btn_previous" />null
             <!-- Backward Button -->
             <ImageButton
                 android:id="@+id/btnBackward"
@@ -82,7 +83,7 @@
         android:layout_width="348dp"
         android:layout_height="29dp"
         android:layout_marginBottom="5dp"
-        android:background="@layout/rounded_corner_seekbar"
+        android:background="@drawable/bg_header_2"
         app:layout_constraintBottom_toTopOf="@+id/player_footer_bg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />

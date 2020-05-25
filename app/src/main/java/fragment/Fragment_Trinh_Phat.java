@@ -60,12 +60,12 @@ public class Fragment_Trinh_Phat extends Fragment implements MediaPlayer.OnCompl
     private TextView     songCurrentDurationLabel;
     private TextView     songTotalDurationLabel;
     private SongsManager songsManager;
-    boolean isRepeat        = false;
-    boolean isShuffle       = false;
-    int position            = 0;
-    int forwardTime         = 10000;
-    int backwardTime        = 10000;
-    MediaPlayer mediaPlayer = new MediaPlayer();
+    private boolean isRepeat        = false;
+    private boolean isShuffle       = false;
+    private int position            = 0;
+    private int forwardTime         = 10000;
+    private int backwardTime        = 10000;
+    private MediaPlayer mediaPlayer = new MediaPlayer();
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

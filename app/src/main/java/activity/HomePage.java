@@ -42,7 +42,6 @@ public class HomePage extends AppCompatActivity {
 
         adapter.addFragment(new Fragment_Trang_Chu(), "Home");
         adapter.addFragment(new Fragment_Trinh_Phat(), "Player");
-        adapter.addFragment(new Fragment_Thu_Vien(), "Libary");
         adapter.addFragment(new Fragment_Ca_Nhan(), "Personal");
 
         viewPager.setAdapter(adapter);
@@ -50,8 +49,7 @@ public class HomePage extends AppCompatActivity {
 
         tabLayout.getTabAt(0).setIcon(R.drawable.home);
         tabLayout.getTabAt(1).setIcon(R.drawable.player);
-        tabLayout.getTabAt(2).setIcon(R.drawable.libary);
-        tabLayout.getTabAt(3).setIcon(R.drawable.personal);
+        tabLayout.getTabAt(2).setIcon(R.drawable.personal);
     }
 
     private void andXa() {
