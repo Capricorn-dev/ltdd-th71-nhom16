@@ -47,9 +47,6 @@ public class Fragment_Playlist extends Fragment {
         playlists.add(new Playlist("HELLO WORLD", R.drawable.banner1, R.drawable.picture1));
         playlists.add(new Playlist("HELLO WORLD", R.drawable.banner2, R.drawable.picture2));
         playlists.add(new Playlist("HELLO WORLD", R.drawable.banner3, R.drawable.picture3));
-        playlists.add(new Playlist("HELLO WORLD", R.drawable.banner1, R.drawable.picture1));
-        playlists.add(new Playlist("HELLO WORLD", R.drawable.banner2, R.drawable.picture2));
-        playlists.add(new Playlist("HELLO WORLD", R.drawable.banner3, R.drawable.picture3));
 
         listViewPlaylist.setAdapter(playlistAdapter);
 
