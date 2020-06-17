@@ -1,6 +1,7 @@
 package adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -15,6 +16,7 @@ import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
+import activity.DanhSachBaiHatActivity;
 import model.songBanner;
 
 public class BannerAdapter extends PagerAdapter {
@@ -34,8 +36,8 @@ public class BannerAdapter extends PagerAdapter {
 
     @NonNull
     @Override
-    public Object instantiateItem(@NonNull ViewGroup container, int position) {
-        LayoutInflater inflater = LayoutInflater.from(context);
+    public Object instantiateItem(@NonNull ViewGroup container, final int position) {
+        final LayoutInflater inflater = LayoutInflater.from(context);
         View view = inflater.inflate(R.layout.banner, null);
 
         ImageView imgBannerBg = view.findViewById(R.id.imgViewBannerBackGround);
@@ -51,6 +53,16 @@ public class BannerAdapter extends PagerAdapter {
                 .into(imgBanner);
         txtViewTitle.setText(songBanners.get(position).getTitle());
         txtViewDescript.setText(songBanners.get(position).getDescription());
+
+        view.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(context, DanhSachBaiHatActivity.class);
+                intent.putExtra("banner", songBanners.get(position));
+
+                context.startActivity(intent);
+            }
+        });
 
         container.addView(view);
 
