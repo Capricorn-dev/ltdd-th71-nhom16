@@ -1,21 +1,16 @@
 package activity;
 
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
-import androidx.viewpager.widget.ViewPager;
-
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 
-import com.example.appmusic.PlayerActivity;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
+import androidx.viewpager.widget.ViewPager;
+
 import com.example.appmusic.R;
 import com.google.android.material.tabs.TabLayout;
 
 import adapter.MainViewFragmentAdapter;
 import fragment.Fragment_Ca_Nhan;
-import fragment.Fragment_Thu_Vien;
 import fragment.Fragment_Trang_Chu;
 import fragment.Fragment_Trinh_Phat;
 
@@ -29,8 +24,6 @@ public class HomePage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home_page);
-        ActionBar actionBar = getSupportActionBar();
-        actionBar.hide();
 
         andXa();
         init();
