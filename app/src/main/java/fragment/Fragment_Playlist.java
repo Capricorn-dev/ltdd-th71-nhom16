@@ -44,9 +44,9 @@ public class Fragment_Playlist extends Fragment {
         playlists = new ArrayList<>();
         playlistAdapter = new PlaylistAdapter(getActivity(), android.R.layout.simple_list_item_1, playlists);
 
-        playlists.add(new Playlist("HELLO WORLD", R.drawable.banner1, R.drawable.picture1));
-        playlists.add(new Playlist("HELLO WORLD", R.drawable.banner2, R.drawable.picture2));
-        playlists.add(new Playlist("HELLO WORLD", R.drawable.banner3, R.drawable.picture3));
+        playlists.add(new Playlist("Hôm nay nghe gì?", R.drawable.pic1_playlist, R.drawable.pic1_playlist_1));
+        playlists.add(new Playlist("Tiệc tùng cuối tuần", R.drawable.pic2_playlist, R.drawable.pic2_playlist_2));
+        playlists.add(new Playlist("Âm nhạc độc quyền", R.drawable.pic3_playlist, R.drawable.pic3_playlist_3));
 
         listViewPlaylist.setAdapter(playlistAdapter);
 

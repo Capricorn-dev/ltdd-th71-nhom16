@@ -23,6 +23,7 @@
         app:tabSelectedTextColor="@color/colorPrimaryDark"
         app:tabTextColor="#000000"
         app:tabIndicatorHeight="1dp"
-        android:background="@android:color/transparent" />
+        android:background="@android:color/transparent"
+        android:theme="@style/AppThemeTwo"/>
 
 </LinearLayout>

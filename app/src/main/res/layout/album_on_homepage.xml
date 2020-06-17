@@ -25,8 +25,8 @@
             android:layout_height="wrap_content"
             android:layout_marginLeft="5dp"
             android:layout_marginRight="2dp"
-            android:text="Ngay xuan long phung sum vay"
-            android:textSize="20dp"
+            android:text="Ngay xuan"
+            android:textSize="18dp"
             android:textStyle="bold"
             android:maxLines="1"
             android:ellipsize="end"/>
@@ -39,7 +39,7 @@
             android:layout_marginRight="2dp"
             android:text="Noo Phuoc Thinh"
             android:textSize="15dp"
-            android:textColor="#81D5CB"
+            android:textColor="#736F72"
             android:maxLines="1"
             android:ellipsize="end"/>
     </LinearLayout>

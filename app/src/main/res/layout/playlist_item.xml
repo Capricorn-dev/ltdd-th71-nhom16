@@ -8,15 +8,14 @@
 
         <ImageView
             android:id="@+id/icon"
-            android:layout_width="75dp"
-            android:layout_height="75dp"
+            android:layout_width="70dp"
+            android:layout_height="70dp"
             android:layout_marginEnd="5dp"
-            android:background="@drawable/music"
-            android:backgroundTint="#0090f7" />
+            android:background="@drawable/music" />
         <TextView
             android:id="@+id/songTitle"
             android:layout_width="322dp"
-            android:layout_height="match_parent"
+            android:layout_height="70dp"
             android:background="@drawable/rounded"
             android:padding="10dp"
             android:textAlignment="gravity"
