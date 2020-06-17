@@ -32,8 +32,8 @@
         android:layout_alignBottom="@+id/imgViewPlaylist"
         android:maxLines="1"
         android:text="HELLO WORLD"
-        android:textSize="20dp"
+        android:textSize="17dp"
         android:textStyle="bold"
-        android:textColor="#FF0303"/>
+        android:textColor="#FFFFFF"/>
 
 </RelativeLayout>

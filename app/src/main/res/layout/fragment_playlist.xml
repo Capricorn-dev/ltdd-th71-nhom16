@@ -7,11 +7,12 @@
         android:id="@+id/txtViewPlaylistTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="ED SHEERAN"
-        android:textSize="25dp"
+        android:text="   Gợi ý cho hôm nay"
+        android:textSize="23dp"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="10dp"
-        android:gravity="center"/>
+        android:textColor="#8C3674"
+        android:layout_marginRight="10dp"/>
     <ListView
         android:id="@+id/listviewPlaylist"
         android:layout_width="match_parent"
@@ -24,8 +25,8 @@
         android:layout_height="wrap_content"
         android:text="Xem thêm playlist"
         android:textSize="20dp"
-        android:textColor="#fa0a0a"
-        android:background="@color/colorAccent"
+        android:textColor="#8C3674"
+
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         android:paddingTop="5dp"

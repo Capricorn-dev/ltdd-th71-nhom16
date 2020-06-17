@@ -45,13 +45,13 @@ public class Fragment_ChuDe_TheLoai extends Fragment {
         final ArrayList<ChuDe> chuDeArrayList  = new ArrayList<>();
         final ArrayList<TheLoai> theLoaiArrayList = new ArrayList<>();
 
-        chuDeArrayList.add(chuDe = new ChuDe("Acoustic", R.drawable.chude_pic1));
-        chuDeArrayList.add(chuDe = new ChuDe("EDM", R.drawable.chude_pic2));
-        chuDeArrayList.add(chuDe = new ChuDe("Music for love", R.drawable.chude_pic3));
+        chuDeArrayList.add(chuDe = new ChuDe("Acoustic", R.drawable.acoustic_chude));
+        chuDeArrayList.add(chuDe = new ChuDe("EDM", R.drawable.thapnien_chude));
+        chuDeArrayList.add(chuDe = new ChuDe("Music for love", R.drawable.love_chude));
 
-        theLoaiArrayList.add(theLoai = new TheLoai("Acoustic EDM", R.drawable.theloai_pic1));
-        theLoaiArrayList.add(theLoai = new TheLoai("Acoustic Pop", R.drawable.theloai_pic2));
-        theLoaiArrayList.add(theLoai = new TheLoai("Dance Pop", R.drawable.theloai_pic3));
+        theLoaiArrayList.add(theLoai = new TheLoai("R & B", R.drawable.dance_theloai));
+        theLoaiArrayList.add(theLoai = new TheLoai("Acoustic Pop", R.drawable.edm_theloai));
+        theLoaiArrayList.add(theLoai = new TheLoai("Dance Pop", R.drawable.dancepop_theloai));
 
         LinearLayout linearLayout = new LinearLayout(getActivity());
         linearLayout.setOrientation(LinearLayout.HORIZONTAL);
