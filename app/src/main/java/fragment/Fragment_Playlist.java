@@ -1,9 +1,11 @@
 package fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RelativeLayout;
@@ -17,6 +19,7 @@ import com.example.appmusic.R;
 
 import java.util.ArrayList;
 
+import activity.DanhSachBaiHatActivity;
 import adapter.PlaylistAdapter;
 import model.Playlist;
 
@@ -28,6 +31,8 @@ public class Fragment_Playlist extends Fragment {
 
     PlaylistAdapter playlistAdapter;
     ArrayList<Playlist> playlists;
+
+    public static final String itemPlaylist = "itemPlaylist";
 
     @Nullable
     @Override
@@ -51,6 +56,16 @@ public class Fragment_Playlist extends Fragment {
         listViewPlaylist.setAdapter(playlistAdapter);
 
         setListViewHeightBasedOnChildren(listViewPlaylist);
+
+        listViewPlaylist.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent intent = new Intent(getActivity(), DanhSachBaiHatActivity.class);
+                intent.putExtra(itemPlaylist, playlists.get(position));
+
+                startActivity(intent);
+            }
+        });
     }
 
     private void anhXa() {
