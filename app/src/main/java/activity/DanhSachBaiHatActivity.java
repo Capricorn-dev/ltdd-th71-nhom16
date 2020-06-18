@@ -52,13 +52,13 @@ public class DanhSachBaiHatActivity extends AppCompatActivity {
 
         if (songBanner != null && !songBanner.getTitle().equals("")) {
             setValueView(songBanner.getTitle(), songBanner.getPicture());
-            GetDataBanner(songBanner.getTitle(), songBanner.getPicture());
+            GetDataBanner(songBanner.getTitle(), songBanner.getPicture(), songBanner.getDescription());
         }
     }
 
-    private void GetDataBanner(String title, int picture) {
+    private void GetDataBanner(String title, int picture, String singerName) {
         songArrayList = new ArrayList<>();
-        songArrayList.add(new Song(title, picture, "Ed Sheeran", R.drawable.backward));
+        songArrayList.add(new Song(title, picture, singerName, R.drawable.acoustic_chude));
 
         danhSachBaiHatAdapter = new DanhSachBaiHatAdapter(DanhSachBaiHatActivity.this,
                 this.songArrayList);

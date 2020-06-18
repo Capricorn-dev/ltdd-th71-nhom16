@@ -17,4 +17,8 @@
         <item name="colorAccent">#721D97</item>
     </style>
 
+    <style name="ToolbarColoredBackArrow" parent="AppTheme">
+        <item name="android:textColorSecondary">#FFFFFF</item>
+    </style>
+
 </resources>
