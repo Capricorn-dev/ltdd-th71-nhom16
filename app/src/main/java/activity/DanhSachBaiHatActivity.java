@@ -68,7 +68,7 @@ public class DanhSachBaiHatActivity extends AppCompatActivity {
     private void getDataPlaylist(String position) {
         songArrayList = new ArrayList<>();
 
-        if (position.equals("Hôm nay nghe gì")) {
+        if (position.equals("Hôm nay nghe gì?")) {
             songArrayList.add(new Song("Hôm nay nghe gì", R.drawable.acoustic_chude, "singerName", R.drawable.acoustic_chude));
         } else if (position.equals("Tiệc tùng cuối tuần")) {
             songArrayList.add(new Song("Tiệc tùng cuối tuần", R.drawable.acoustic_chude, "singerName", R.drawable.acoustic_chude));
