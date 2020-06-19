@@ -12,7 +12,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.SeekBar;
@@ -21,26 +20,15 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
-import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
-import androidx.core.content.ContextCompat;
 import androidx.fragment.app.Fragment;
 
 import com.example.appmusic.PlayListActivity;
-import com.example.appmusic.PlayerActivity;
 import com.example.appmusic.R;
-import com.example.appmusic.SongsManager;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Random;
-
-import activity.HomePage;
-
-import static android.Manifest.permission.READ_EXTERNAL_STORAGE;
 
 public class Fragment_Trinh_Phat extends Fragment implements MediaPlayer.OnCompletionListener{
     private static final int MY_PERMISSIONS_REQUEST_READ_MEDIA = 1 ;
@@ -59,7 +47,6 @@ public class Fragment_Trinh_Phat extends Fragment implements MediaPlayer.OnCompl
     private TextView songTitleLabel;
     private TextView     songCurrentDurationLabel;
     private TextView     songTotalDurationLabel;
-    private SongsManager songsManager;
     private boolean isRepeat        = false;
     private boolean isShuffle       = false;
     private int position            = 0;
@@ -73,7 +60,6 @@ public class Fragment_Trinh_Phat extends Fragment implements MediaPlayer.OnCompl
 
 
         mediaPlayer.setOnCompletionListener(this);
-        songsManager = new SongsManager();
         SetDataSource(position);
         anhXa();
 
@@ -193,7 +179,6 @@ public class Fragment_Trinh_Phat extends Fragment implements MediaPlayer.OnCompl
                             mediaPlayer.start();
                             cdDisc.startAnimation(animation);
                             btnPlay.setImageResource(R.drawable.btn_pause);
-                            songTitleLabel.setText(songsManager.arraySong().get(position).get("songTitle"));
                             SetTimeTotal();
                             UpdateTimeSong();
                         }
@@ -305,7 +290,7 @@ public class Fragment_Trinh_Phat extends Fragment implements MediaPlayer.OnCompl
             public void onClick(View v) {
                 position--;
                 if (position < 0) {
-                    position = songsManager.arraySong().size()-1;
+
                 }
                 if (mediaPlayer.isPlaying()) {
                     mediaPlayer.stop();
@@ -313,7 +298,6 @@ public class Fragment_Trinh_Phat extends Fragment implements MediaPlayer.OnCompl
                 SetDataSource(position);
                 mediaPlayer.start();
                 btnPlay.setImageResource(R.drawable.btn_pause);
-                songTitleLabel.setText(songsManager.arraySong().get(position).get("songTitle"));
                 SetTimeTotal();
             }
         });
@@ -324,7 +308,7 @@ public class Fragment_Trinh_Phat extends Fragment implements MediaPlayer.OnCompl
             @Override
             public void onClick(View v) {
                 position++;
-                if (position > songsManager.arraySong().size()-1){
+                if (position ){
                     position = 0;
                 }
                 if(mediaPlayer.isPlaying()) {
@@ -333,7 +317,6 @@ public class Fragment_Trinh_Phat extends Fragment implements MediaPlayer.OnCompl
                 SetDataSource(position);
                 mediaPlayer.start();
                 btnPlay.setImageResource(R.drawable.btn_pause);
-                songTitleLabel.setText(songsManager.arraySong().get(position).get("songTitle"));
                 SetTimeTotal();
             }
         });
@@ -358,7 +341,6 @@ public class Fragment_Trinh_Phat extends Fragment implements MediaPlayer.OnCompl
             position = data.getExtras().getInt("songIndex");
             // play selected song
             SetDataSource(position);
-            songTitleLabel.setText(songsManager.arraySong().get(position).get("songTitle"));
             mediaPlayer.start();
             cdDisc.startAnimation(animation);
             btnPlay.setImageResource(R.drawable.btn_pause);
@@ -374,7 +356,6 @@ public class Fragment_Trinh_Phat extends Fragment implements MediaPlayer.OnCompl
     public void  SetDataSource(int songIndex){
         try{
             mediaPlayer.reset();
-            mediaPlayer.setDataSource(songsManager.arraySong().get(songIndex).get("songPath"));
             mediaPlayer.prepare();
         } catch (IllegalArgumentException | IllegalStateException | IOException e) {
             e.printStackTrace();
@@ -389,13 +370,12 @@ public class Fragment_Trinh_Phat extends Fragment implements MediaPlayer.OnCompl
             mediaPlayer.start();
         }else if(isShuffle){
             Random rand = new Random();
-            position = rand.nextInt(songsManager.arraySong().size());
             SetDataSource(position);
             mediaPlayer.start();
             SetTimeTotal();
         }else {
             position++;
-            if (position > songsManager.arraySong().size()-1){
+            if (position ){
                 position = 0;
             }
             if(mediaPlayer.isPlaying()) {
