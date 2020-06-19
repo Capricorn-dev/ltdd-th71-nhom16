@@ -308,9 +308,6 @@ public class Fragment_Trinh_Phat extends Fragment implements MediaPlayer.OnCompl
             @Override
             public void onClick(View v) {
                 position++;
-                if (position ){
-                    position = 0;
-                }
                 if(mediaPlayer.isPlaying()) {
                     mediaPlayer.stop();
                 }
@@ -375,9 +372,6 @@ public class Fragment_Trinh_Phat extends Fragment implements MediaPlayer.OnCompl
             SetTimeTotal();
         }else {
             position++;
-            if (position ){
-                position = 0;
-            }
             if(mediaPlayer.isPlaying()) {
                 mediaPlayer.stop();
             }

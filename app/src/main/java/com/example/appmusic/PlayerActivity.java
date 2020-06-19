@@ -44,7 +44,6 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
     private TextView     songTitleLabel;
     private TextView     songCurrentDurationLabel;
     private TextView     songTotalDurationLabel;
-    private SongsManager songsManager;
     boolean isRepeat        = false;
     boolean isShuffle       = false;
     int position            = 0;
@@ -61,7 +60,6 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
          * Hàm lấy ID của các phần tử
          **/
         anhXa();
-        songsManager = new SongsManager();
         SetDataSource(position);
         mediaPlayer.setOnCompletionListener(this);
         /**
@@ -233,12 +231,6 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
             @Override
             public void onClick(View v) {
                 position--;
-                if (position < 0) {
-                    position = songsManager.arraySong().size()-1;
-                }
-                if (mediaPlayer.isPlaying()) {
-                    mediaPlayer.stop();
-                }
                 SetDataSource(position);
                 mediaPlayer.start();
                 btnPlay.setImageResource(R.drawable.btn_pause);
@@ -252,12 +244,6 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
             @Override
             public void onClick(View v) {
                 position++;
-                if (position > songsManager.arraySong().size()-1){
-                    position = 0;
-                }
-                if(mediaPlayer.isPlaying()) {
-                    mediaPlayer.stop();
-                }
                 SetDataSource(position);
                 mediaPlayer.start();
                 btnPlay.setImageResource(R.drawable.btn_pause);
@@ -340,8 +326,6 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
     public void  SetDataSource(int songIndex){
         try{
             mediaPlayer.reset();
-            mediaPlayer.setDataSource(songsManager.arraySong().get(songIndex).get("songPath"));
-            songTitleLabel.setText(songsManager.arraySong().get(songIndex).get("songTitle"));
             mediaPlayer.prepare();
         } catch (IllegalArgumentException | IllegalStateException | IOException e) {
             e.printStackTrace();
@@ -388,18 +372,11 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
             mediaPlayer.start();
         }else if(isShuffle){
             Random rand = new Random();
-            position = rand.nextInt(songsManager.arraySong().size());
             SetDataSource(position);
             mediaPlayer.start();
             SetTimeTotal();
         }else {
             position++;
-            if (position > songsManager.arraySong().size()-1){
-                position = 0;
-            }
-            if(mediaPlayer.isPlaying()) {
-                mediaPlayer.stop();
-            }
             SetDataSource(position);
             mediaPlayer.start();
             SetTimeTotal();

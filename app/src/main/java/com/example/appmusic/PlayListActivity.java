@@ -37,8 +37,6 @@ public class PlayListActivity extends AppCompatActivity {
 
         Objects.requireNonNull(getSupportActionBar()).setTitle("Playlist");
 
-        SongsManager plm = new SongsManager();
-        songsList = plm.arraySong();
         lv = (ListView) findViewById(R.id.listview);
         songsListData.addAll(songsList);
         adapter = new SimpleAdapter(PlayListActivity.this, songsListData,R.layout.playlist_item, new String[] { "songTitle" }, new int[] {R.id.songTitle });
