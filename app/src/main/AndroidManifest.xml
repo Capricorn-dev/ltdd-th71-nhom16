@@ -11,7 +11,8 @@
         android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="activity.DanhSachBaiHatActivity"></activity>
+        <activity android:name="activity.DanhSachBaiHatPlayListActivity"></activity>
+        <activity android:name="activity.DanhSachBaiHatActivity" />
         <activity android:name=".MainActivity" />
         <activity android:name=".PlayListActivity" />
         <activity android:name=".ResActivity" />

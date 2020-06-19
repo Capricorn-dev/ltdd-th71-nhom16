@@ -20,6 +20,7 @@ import com.example.appmusic.R;
 import java.util.ArrayList;
 
 import activity.DanhSachBaiHatActivity;
+import activity.DanhSachBaiHatPlayListActivity;
 import adapter.PlaylistAdapter;
 import model.Playlist;
 
@@ -41,6 +42,14 @@ public class Fragment_Playlist extends Fragment {
 
         anhXa();
         getData();
+
+        txtViewMorePlaylist.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), DanhSachBaiHatPlayListActivity.class);
+                startActivity(intent);
+            }
+        });
 
         return view;
     }
