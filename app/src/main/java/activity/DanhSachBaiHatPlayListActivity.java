@@ -38,16 +38,13 @@ public class DanhSachBaiHatPlayListActivity extends AppCompatActivity {
     private void getData() {
         playlistArrayList = new ArrayList<>();
 
-        playlistArrayList.add(new Playlist("Hôm nay nghe gì?", R.drawable.pic1_playlist, R.drawable.pic1_playlist_1));
-        playlistArrayList.add(new Playlist("Tiệc tùng cuối tuần", R.drawable.pic2_playlist, R.drawable.pic2_playlist_2));
-        playlistArrayList.add(new Playlist("Âm nhạc độc quyền", R.drawable.pic3_playlist, R.drawable.pic3_playlist_3));
+        playlistArrayList.add(new Playlist("Nhạc hot", R.drawable.boyfriend, R.drawable.stay));
+        playlistArrayList.add(new Playlist("Ca sĩ Việt Nam", R.drawable.hong_kong_1, R.drawable.amee));
+        playlistArrayList.add(new Playlist("EDM ", R.drawable.edm, R.drawable.inthenameoflove));
+        playlistArrayList.add(new Playlist("Top 100", R.drawable.havana, R.drawable.havana));
+        playlistArrayList.add(new Playlist("Chill", R.drawable.chill, R.drawable.loi_yeu_ngay_dai));
+        playlistArrayList.add(new Playlist("Thanh Xuân", R.drawable.thanhxuan, R.drawable.thangdien));
 
-        playlistArrayList.add(new Playlist("Hôm nay nghe gì?", R.drawable.pic1_playlist, R.drawable.pic1_playlist_1));
-        playlistArrayList.add(new Playlist("Tiệc tùng cuối tuần", R.drawable.pic2_playlist, R.drawable.pic2_playlist_2));
-        playlistArrayList.add(new Playlist("Âm nhạc độc quyền", R.drawable.pic3_playlist, R.drawable.pic3_playlist_3));
-        playlistArrayList.add(new Playlist("Hôm nay nghe gì?", R.drawable.pic1_playlist, R.drawable.pic1_playlist_1));
-        playlistArrayList.add(new Playlist("Tiệc tùng cuối tuần", R.drawable.pic2_playlist, R.drawable.pic2_playlist_2));
-        playlistArrayList.add(new Playlist("Âm nhạc độc quyền", R.drawable.pic3_playlist, R.drawable.pic3_playlist_3));
 
         danhSachBaiHatPlaylistAdapter = new DanhSachBaiHatPlaylistAdapter(DanhSachBaiHatPlayListActivity.this,
                 this.playlistArrayList);
