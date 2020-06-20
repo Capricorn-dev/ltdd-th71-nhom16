@@ -1,6 +1,8 @@
 package model;
 
-public class ChuDe {
+import java.io.Serializable;
+
+public class ChuDe implements Serializable {
     String tenChuDe;
     int hinhChuDe;
 

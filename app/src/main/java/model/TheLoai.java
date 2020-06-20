@@ -1,6 +1,8 @@
 package model;
 
-public class TheLoai {
+import java.io.Serializable;
+
+public class TheLoai implements Serializable {
     String tenTheLoai;
     int hinhTheLoai;
 

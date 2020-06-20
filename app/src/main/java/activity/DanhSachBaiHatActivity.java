@@ -24,6 +24,7 @@ import java.util.ArrayList;
 import adapter.DanhSachBaiHatAdapter;
 import model.Playlist;
 import model.Song;
+import model.TheLoai;
 import model.songBanner;
 
 public class DanhSachBaiHatActivity extends AppCompatActivity {
@@ -41,6 +42,7 @@ public class DanhSachBaiHatActivity extends AppCompatActivity {
     DanhSachBaiHatAdapter danhSachBaiHatAdapter;
     Playlist playlist;
 
+    TheLoai theLoai;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -63,6 +65,30 @@ public class DanhSachBaiHatActivity extends AppCompatActivity {
 
             getDataPlaylist(playlist.getName());
         }
+
+        if (theLoai != null && !theLoai.getTenTheLoai().equals("")) {
+            setValueView(theLoai.getTenTheLoai(), theLoai.getHinhTheLoai());
+            getDataTheLoai(theLoai.getTenTheLoai());
+        }
+    }
+
+    private void getDataTheLoai(String name) {
+        songArrayList = new ArrayList<>();
+
+        if (name.equals("R & B")) {
+            songArrayList.add(new Song("R & B", R.drawable.acoustic_chude, "singerName", R.drawable.acoustic_chude));
+        } else if (name.equals("Acoustic Pop")) {
+            songArrayList.add(new Song("Acoustic Pop", R.drawable.acoustic_chude, "singerName", R.drawable.acoustic_chude));
+        } else if (name.equals("Dance Pop")) {
+            songArrayList.add(new Song("Dance Pop", R.drawable.acoustic_chude, "singerName", R.drawable.acoustic_chude));
+        }
+
+        danhSachBaiHatAdapter = new DanhSachBaiHatAdapter(DanhSachBaiHatActivity.this,
+                this.songArrayList);
+
+        recyclerViewDSBaiHat.setLayoutManager(new LinearLayoutManager(DanhSachBaiHatActivity.this));
+        recyclerViewDSBaiHat.setAdapter(danhSachBaiHatAdapter);
+
     }
 
     private void getDataPlaylist(String position) {
@@ -137,6 +163,10 @@ public class DanhSachBaiHatActivity extends AppCompatActivity {
 
             if (intent.hasExtra("itemPlaylist")) {
                 playlist = (Playlist) intent.getSerializableExtra("itemPlaylist");
+            }
+
+            if (intent.hasExtra("theLoai")) {
+                theLoai = (TheLoai) intent.getSerializableExtra("theLoai");
             }
         }
     }
