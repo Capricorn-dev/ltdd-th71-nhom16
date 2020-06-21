@@ -6,6 +6,7 @@ import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.ImageView;
 
@@ -57,7 +58,7 @@ public class DanhSachBaiHatActivity extends AppCompatActivity {
 
         if (songBanner != null && !songBanner.getTitle().equals("")) {
             setValueView(songBanner.getTitle(), songBanner.getPicture());
-            getDataBanner(songBanner.getTitle(), songBanner.getPicture(), songBanner.getDescription());
+            getDataBanner(songBanner.getTitle(), songBanner.getPicture(), songBanner.getDescription(), songBanner.getLinkSong());
         }
 
 
@@ -133,9 +134,9 @@ public class DanhSachBaiHatActivity extends AppCompatActivity {
         recyclerViewDSBaiHat.setAdapter(danhSachBaiHatAdapter);
     }
 
-    private void getDataBanner(String title, int picture, String singerName) {
+    private void getDataBanner(String title, int picture, String singerName, int linkSong) {
         songArrayList = new ArrayList<>();
-        songArrayList.add(new Song(title, picture, singerName, R.drawable.acoustic_chude));
+        songArrayList.add(new Song(title, picture, singerName, linkSong));
 
         danhSachBaiHatAdapter = new DanhSachBaiHatAdapter(DanhSachBaiHatActivity.this,
                 this.songArrayList);
