@@ -1,6 +1,7 @@
 package adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,6 +14,7 @@ import com.example.appmusic.R;
 
 import java.util.ArrayList;
 
+import activity.MediaPlayerActivity;
 import model.Song;
 
 public class DanhSachBaiHatAdapter extends RecyclerView.Adapter<DanhSachBaiHatAdapter.ViewHolder> {
@@ -54,6 +56,15 @@ public class DanhSachBaiHatAdapter extends RecyclerView.Adapter<DanhSachBaiHatAd
             txtViewDanhSachIndex = itemView.findViewById(R.id.txtViewDanhSachIndex);
             txtViewTenBaiHat = itemView.findViewById(R.id.txtViewTenBaiHat);
             txtViewTenCaSi = itemView.findViewById(R.id.txtViewTenCaSi);
+
+            itemView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Intent intent = new Intent(context, MediaPlayerActivity.class);
+                    intent.putExtra("song", songArrayList.get(getPosition()));
+                    context.startActivity(intent);
+                }
+            });
         }
     }
 }
