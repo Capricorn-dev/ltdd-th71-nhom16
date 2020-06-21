@@ -30,8 +30,8 @@ public class BannerAdapter extends PagerAdapter {
 
     public void addSong() {
         songBanners.add(new songBanner("Nếu anh không phiền", "Kaity Nguyễn", R.drawable.pic1_banner, R.drawable.pic1_banner_1, R.raw.grateful_neffex));
-        songBanners.add(new songBanner("Wolves", "Selena Gomez", R.drawable.pic2_banner, R.drawable.pic2_banner_2, R.raw.grateful_neffex));
-        songBanners.add(new songBanner("Something just like this", "The Chainsmokers", R.drawable.pic3_banner, R.drawable.pic3_banner_3, R.raw.grateful_neffex));
+        songBanners.add(new songBanner("Sweet But Psycho", "Ava Max", R.drawable.pic2_banner, R.drawable.pic2_banner_2, R.raw.grateful_neffex));
+        songBanners.add(new songBanner("Crush", "", R.drawable.pic3_banner, R.drawable.pic3_banner_3, R.raw.grateful_neffex));
     }
 
     @NonNull

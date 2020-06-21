@@ -58,6 +58,7 @@ public class DanhSachBaiHatPlayListActivity extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("Playlist");
         toolBarDanhSachPlaylist.setTitleTextColor(Color.rgb(140, 25, 85));
+
         toolBarDanhSachPlaylist.setNavigationOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

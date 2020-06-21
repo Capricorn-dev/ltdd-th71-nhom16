@@ -51,7 +51,7 @@ public class Fragment_Album extends Fragment {
         albumArrayList = new ArrayList<>();
         albumArrayList.add(new Album("Blank Space", "Taylor Swift", R.drawable.pic1_album));
         albumArrayList.add(new Album("Crush", "Tessa Violet", R.drawable.pic2_album));
-        albumArrayList.add(new Album("Sweet But Psycho", "Ava Max", R.drawable.pic3_album));
+        albumArrayList.add(new Album("Wolves", "Selena Gomez", R.drawable.pic3_album));
 
         albumAdapter = new AlbumAdapter(getActivity(), albumArrayList);
 
