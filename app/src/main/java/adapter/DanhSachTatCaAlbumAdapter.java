@@ -19,12 +19,12 @@ import java.util.ArrayList;
 import activity.DanhSachBaiHatActivity;
 import model.Album;
 
-public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ViewHolder> {
+public class DanhSachTatCaAlbumAdapter extends RecyclerView.Adapter<DanhSachTatCaAlbumAdapter.ViewHolder>{
     Context context;
-    Album album;
     ArrayList<Album> albumArrayList;
+    Album album;
 
-    public AlbumAdapter(Context context, ArrayList<Album> albumArrayList) {
+    public DanhSachTatCaAlbumAdapter(Context context, ArrayList<Album> albumArrayList) {
         this.context = context;
         this.albumArrayList = albumArrayList;
     }
@@ -33,18 +33,16 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ViewHolder> 
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         LayoutInflater inflater = LayoutInflater.from(context);
-        View view = inflater.inflate(R.layout.album_on_homepage, parent, false);
+        View view = inflater.inflate(R.layout.danh_sach_tat_ca_album_adapter, parent, false);
+
         return new ViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
         album = albumArrayList.get(position);
-
-        holder.txtViewAlbum.setText(album.getTenAlbum());
-        holder.txtViewTenCaSiAlbum.setText(album.getTenCaSiAlbum());
-
-        Picasso.with(context).load(album.getHinhAlbum()).into(holder.imgViewAlbum);
+        Picasso.with(context).load(album.getHinhAlbum()).into(holder.imgViewDanhSachTatCaAlbum);
+        holder.txtViewTenAlbum.setText(album.getTenCaSiAlbum());
     }
 
     @Override
@@ -53,15 +51,15 @@ public class AlbumAdapter extends RecyclerView.Adapter<AlbumAdapter.ViewHolder> 
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        ImageView imgViewAlbum;
-        TextView txtViewAlbum, txtViewTenCaSiAlbum;
+        ImageView imgViewDanhSachTatCaAlbum;
+        TextView txtViewTenAlbum, txtViewTenCaSiTrongAlbum;
+
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
 
-            imgViewAlbum = itemView.findViewById(R.id.imgViewAlbum);
-
-            txtViewAlbum = itemView.findViewById(R.id.txtViewAlbum);
-            txtViewTenCaSiAlbum = itemView.findViewById(R.id.txtViewTenCaSiAlbum);
+            imgViewDanhSachTatCaAlbum = itemView.findViewById(R.id.imgViewDanhSachTatCaAlbum);
+            txtViewTenAlbum = itemView.findViewById(R.id.txtViewTenAlbum);
+            txtViewTenCaSiTrongAlbum = itemView.findViewById(R.id.txtViewTenCaSiTrongAlbum);
 
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override

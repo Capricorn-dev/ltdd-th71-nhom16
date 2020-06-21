@@ -1,5 +1,6 @@
 package fragment;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +17,7 @@ import com.example.appmusic.R;
 
 import java.util.ArrayList;
 
+import activity.DanhSachTatCaAlbumActivity;
 import adapter.AlbumAdapter;
 import model.Album;
 
@@ -32,6 +34,15 @@ public class Fragment_Album extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_album, container, false);
         anhXa();
+
+        txtViewXemThemAlbum.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getActivity(), DanhSachTatCaAlbumActivity.class);
+                startActivity(intent);
+            }
+        });
+
         getData();
         return view;
     }

@@ -22,6 +22,7 @@ import com.squareup.picasso.Picasso;
 import java.util.ArrayList;
 
 import adapter.DanhSachBaiHatAdapter;
+import model.Album;
 import model.Playlist;
 import model.Song;
 import model.TheLoai;
@@ -43,7 +44,7 @@ public class DanhSachBaiHatActivity extends AppCompatActivity {
     Playlist playlist;
 
     TheLoai theLoai;
-
+    Album album;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -70,6 +71,29 @@ public class DanhSachBaiHatActivity extends AppCompatActivity {
             setValueView(theLoai.getTenTheLoai(), theLoai.getHinhTheLoai());
             getDataTheLoai(theLoai.getTenTheLoai());
         }
+
+        if (album != null && !album.getTenAlbum().equals("")) {
+            setValueView(album.getTenAlbum(), album.getHinhAlbum());
+            getDataAlbum(album.getTenAlbum());
+        }
+    }
+
+    private void getDataAlbum(String tenAlbum) {
+        songArrayList = new ArrayList<>();
+
+        if (tenAlbum.equals("Blank Space")) {
+            songArrayList.add(new Song("Blank Space", R.drawable.pic1_album, "Taylor Swift", R.drawable.acoustic_chude));
+        } else if (tenAlbum.equals("Crush")) {
+            songArrayList.add(new Song("Crush", R.drawable.pic2_album, "Tessa Violet", R.drawable.acoustic_chude));
+        } else if (tenAlbum.equals("Sweet But Psycho")) {
+            songArrayList.add(new Song("Sweet But Psycho", R.drawable.pic3_album, "Ava Max", R.drawable.acoustic_chude));
+        }
+
+        danhSachBaiHatAdapter = new DanhSachBaiHatAdapter(DanhSachBaiHatActivity.this,
+                this.songArrayList);
+
+        recyclerViewDSBaiHat.setLayoutManager(new LinearLayoutManager(DanhSachBaiHatActivity.this));
+        recyclerViewDSBaiHat.setAdapter(danhSachBaiHatAdapter);
     }
 
     private void getDataTheLoai(String name) {
@@ -167,6 +191,10 @@ public class DanhSachBaiHatActivity extends AppCompatActivity {
 
             if (intent.hasExtra("theLoai")) {
                 theLoai = (TheLoai) intent.getSerializableExtra("theLoai");
+            }
+
+            if (intent.hasExtra("album")) {
+                album = (Album) intent.getSerializableExtra("album");
             }
         }
     }
