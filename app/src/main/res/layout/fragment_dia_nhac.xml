@@ -9,7 +9,7 @@
         android:layout_width="350dp"
         android:layout_height="350dp"
         android:layout_centerInParent="true"
-        android:src="@drawable/record2"
+        android:src="@drawable/ic_launcher_background"
         app:civ_border_color="#000000"
         app:civ_border_width="2dp"/>
 
