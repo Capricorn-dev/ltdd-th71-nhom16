@@ -47,7 +47,7 @@ public class DanhSachTheLoaiTheoChuDeActivity extends AppCompatActivity {
 
         theLoaiArrayList.add(theLoai = new TheLoai("R & B", R.drawable.dance_theloai));
         theLoaiArrayList.add(theLoai = new TheLoai("Acoustic Pop", R.drawable.edm_theloai));
-        theLoaiArrayList.add(theLoai = new TheLoai("Dance Pop", R.drawable.dancepop_theloai));
+        theLoaiArrayList.add(theLoai = new TheLoai("Dance Pop", R.drawable.dance_theloai));
 
         danhSachTheLoaiTheoChuDeAdapter = new DanhSachTheLoaiTheoChuDeAdapter(DanhSachTheLoaiTheoChuDeActivity.this,
                 theLoaiArrayList);

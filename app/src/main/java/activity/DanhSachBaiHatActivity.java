@@ -83,11 +83,11 @@ public class DanhSachBaiHatActivity extends AppCompatActivity {
         songArrayList = new ArrayList<>();
 
         if (tenAlbum.equals("Blank Space")) {
-            songArrayList.add(new Song("Blank Space", R.drawable.pic1_album, "Taylor Swift", R.drawable.acoustic_chude));
+            songArrayList.add(new Song("Blank Space", R.drawable.pic1_album, "Taylor Swift", R.drawable.acoustic_theloai));
         } else if (tenAlbum.equals("Crush")) {
-            songArrayList.add(new Song("Crush", R.drawable.pic2_album, "Tessa Violet", R.drawable.acoustic_chude));
+            songArrayList.add(new Song("Something just kike this", R.drawable.pic1_album, "The Chainsmokers", R.drawable.acoustic_theloai));
         } else if (tenAlbum.equals("Sweet But Psycho")) {
-            songArrayList.add(new Song("Sweet But Psycho", R.drawable.pic3_album, "Ava Max", R.drawable.acoustic_chude));
+            songArrayList.add(new Song("Sweet But Psycho", R.drawable.pic3_album, "Ava Max", R.drawable.acoustic_theloai));
         }
 
         danhSachBaiHatAdapter = new DanhSachBaiHatAdapter(DanhSachBaiHatActivity.this,
@@ -101,11 +101,11 @@ public class DanhSachBaiHatActivity extends AppCompatActivity {
         songArrayList = new ArrayList<>();
 
         if (name.equals("R & B")) {
-            songArrayList.add(new Song("R & B", R.drawable.acoustic_chude, "singerName", R.drawable.acoustic_chude));
+            songArrayList.add(new Song("R & B", R.drawable.acoustic_theloai, "singerName", R.drawable.acoustic_theloai));
         } else if (name.equals("Acoustic Pop")) {
-            songArrayList.add(new Song("Acoustic Pop", R.drawable.acoustic_chude, "singerName", R.drawable.acoustic_chude));
+            songArrayList.add(new Song("Acoustic Pop", R.drawable.acoustic_theloai, "singerName", R.drawable.acoustic_theloai));
         } else if (name.equals("Dance Pop")) {
-            songArrayList.add(new Song("Dance Pop", R.drawable.acoustic_chude, "singerName", R.drawable.acoustic_chude));
+            songArrayList.add(new Song("Dance Pop", R.drawable.acoustic_theloai, "singerName", R.drawable.acoustic_theloai));
         }
 
         danhSachBaiHatAdapter = new DanhSachBaiHatAdapter(DanhSachBaiHatActivity.this,
@@ -120,11 +120,11 @@ public class DanhSachBaiHatActivity extends AppCompatActivity {
         songArrayList = new ArrayList<>();
 
         if (position.equals("Hôm nay nghe gì?")) {
-            songArrayList.add(new Song("Hôm nay nghe gì", R.drawable.acoustic_chude, "singerName", R.drawable.acoustic_chude));
+            songArrayList.add(new Song("Hôm nay nghe gì", R.drawable.acoustic_theloai, "singerName", R.drawable.acoustic_theloai));
         } else if (position.equals("Tiệc tùng cuối tuần")) {
-            songArrayList.add(new Song("Tiệc tùng cuối tuần", R.drawable.acoustic_chude, "singerName", R.drawable.acoustic_chude));
+            songArrayList.add(new Song("Tiệc tùng cuối tuần", R.drawable.acoustic_theloai, "singerName", R.drawable.acoustic_theloai));
         } else if (position.equals("Âm nhạc độc quyền")) {
-            songArrayList.add(new Song("Âm nhạc độc quyền", R.drawable.acoustic_chude, "singerName", R.drawable.acoustic_chude));
+            songArrayList.add(new Song("Âm nhạc độc quyền", R.drawable.acoustic_theloai, "singerName", R.drawable.acoustic_theloai));
         }
 
         danhSachBaiHatAdapter = new DanhSachBaiHatAdapter(DanhSachBaiHatActivity.this,

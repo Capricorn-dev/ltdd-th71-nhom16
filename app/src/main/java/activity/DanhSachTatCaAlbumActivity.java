@@ -37,10 +37,10 @@ public class DanhSachTatCaAlbumActivity extends AppCompatActivity {
     private void getData() {
         albumArrayList = new ArrayList<>();
 
-        albumArrayList.add(new Album("Blank Space", "Taylor Swift", R.drawable.pic1_album));
-        albumArrayList.add(new Album("Crush", "Tessa Violet", R.drawable.pic2_album));
-        albumArrayList.add(new Album("Blank Space", "Taylor Swift", R.drawable.pic1_album));
-        albumArrayList.add(new Album("Crush", "Tessa Violet", R.drawable.pic2_album));
+        albumArrayList.add(new Album("Nữ hoàng Ariana Grande", "Arriana Grande", R.drawable.arianagrande_album));
+        albumArrayList.add(new Album("", "Vpop", R.drawable.vpop_album));
+        albumArrayList.add(new Album("", "Young", R.drawable.tuoitre_album));
+
 
         danhSachTatCaAlbumAdapter = new DanhSachTatCaAlbumAdapter(DanhSachTatCaAlbumActivity.this,
                 this.albumArrayList);

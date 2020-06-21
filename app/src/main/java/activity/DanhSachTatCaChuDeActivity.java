@@ -37,14 +37,11 @@ public class DanhSachTatCaChuDeActivity extends AppCompatActivity {
     private void getData() {
         chuDeArrayList = new ArrayList<>();
 
-        chuDeArrayList.add(chuDe = new ChuDe("Acoustic", R.drawable.acoustic_chude));
+        chuDeArrayList.add(chuDe = new ChuDe("Acoustic", R.drawable.acoustic_theloai));
         chuDeArrayList.add(chuDe = new ChuDe("EDM", R.drawable.thapnien_chude));
-        chuDeArrayList.add(chuDe = new ChuDe("Music for love", R.drawable.love_chude));
-        chuDeArrayList.add(chuDe = new ChuDe("Music for love", R.drawable.love_chude));
-        chuDeArrayList.add(chuDe = new ChuDe("Music for love", R.drawable.love_chude));
-        chuDeArrayList.add(chuDe = new ChuDe("Music for love", R.drawable.love_chude));
-        chuDeArrayList.add(chuDe = new ChuDe("Music for love", R.drawable.love_chude));
-        chuDeArrayList.add(chuDe = new ChuDe("Music for love", R.drawable.love_chude));
+        chuDeArrayList.add(chuDe = new ChuDe("Nữ thần Ariana Grande", R.drawable.arianagrande));
+        chuDeArrayList.add(chuDe = new ChuDe("Ca khúc ngày mưa", R.drawable.rain));
+        chuDeArrayList.add(chuDe = new ChuDe("Yêu là chân ái", R.drawable.chanai));
 
         danhSachTatCaChuDeAdapter = new DanhSachTatCaChuDeAdapter(DanhSachTatCaChuDeActivity.this,
                 chuDeArrayList);

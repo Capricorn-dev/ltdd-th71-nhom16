@@ -58,13 +58,13 @@ public class Fragment_ChuDe_TheLoai extends Fragment {
         final ArrayList<ChuDe> chuDeArrayList  = new ArrayList<>();
         final ArrayList<TheLoai> theLoaiArrayList = new ArrayList<>();
 
-        chuDeArrayList.add(chuDe = new ChuDe("Acoustic", R.drawable.acoustic_chude));
-        chuDeArrayList.add(chuDe = new ChuDe("EDM", R.drawable.thapnien_chude));
+        chuDeArrayList.add(chuDe = new ChuDe("Dance Pop", R.drawable.dancepop_chude));
+        chuDeArrayList.add(chuDe = new ChuDe("Thập niên", R.drawable.thapnien_chude));
         chuDeArrayList.add(chuDe = new ChuDe("Music for love", R.drawable.love_chude));
 
         theLoaiArrayList.add(theLoai = new TheLoai("R & B", R.drawable.dance_theloai));
-        theLoaiArrayList.add(theLoai = new TheLoai("Acoustic Pop", R.drawable.edm_theloai));
-        theLoaiArrayList.add(theLoai = new TheLoai("Dance Pop", R.drawable.dancepop_theloai));
+        theLoaiArrayList.add(theLoai = new TheLoai("EDM", R.drawable.edm_theloai));
+        theLoaiArrayList.add(theLoai = new TheLoai("Acoustic", R.drawable.acoustic_theloai));
 
         LinearLayout linearLayout = new LinearLayout(getActivity());
         linearLayout.setOrientation(LinearLayout.HORIZONTAL);
