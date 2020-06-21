@@ -1,6 +1,9 @@
 package model;
 
-public class Song {
+import android.os.Parcel;
+import android.os.Parcelable;
+
+public class Song implements Parcelable {
     String songName;
     int picture;
     String singer;
@@ -12,6 +15,25 @@ public class Song {
         this.singer = singer;
         this.songLink = songLink;
     }
+
+    protected Song(Parcel in) {
+        songName = in.readString();
+        picture = in.readInt();
+        singer = in.readString();
+        songLink = in.readInt();
+    }
+
+    public static final Creator<Song> CREATOR = new Creator<Song>() {
+        @Override
+        public Song createFromParcel(Parcel in) {
+            return new Song(in);
+        }
+
+        @Override
+        public Song[] newArray(int size) {
+            return new Song[size];
+        }
+    };
 
     public String getSongName() {
         return songName;
@@ -43,5 +65,18 @@ public class Song {
 
     public void setSongLink(int songLink) {
         this.songLink = songLink;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(songName);
+        dest.writeInt(picture);
+        dest.writeString(singer);
+        dest.writeInt(songLink);
     }
 }

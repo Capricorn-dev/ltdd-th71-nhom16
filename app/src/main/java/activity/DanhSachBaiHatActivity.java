@@ -95,6 +95,8 @@ public class DanhSachBaiHatActivity extends AppCompatActivity {
 
         recyclerViewDSBaiHat.setLayoutManager(new LinearLayoutManager(DanhSachBaiHatActivity.this));
         recyclerViewDSBaiHat.setAdapter(danhSachBaiHatAdapter);
+
+        eventClick();
     }
 
     private void getDataTheLoai(String name) {
@@ -114,6 +116,8 @@ public class DanhSachBaiHatActivity extends AppCompatActivity {
         recyclerViewDSBaiHat.setLayoutManager(new LinearLayoutManager(DanhSachBaiHatActivity.this));
         recyclerViewDSBaiHat.setAdapter(danhSachBaiHatAdapter);
 
+        eventClick();
+
     }
 
     private void getDataPlaylist(String position) {
@@ -132,6 +136,8 @@ public class DanhSachBaiHatActivity extends AppCompatActivity {
 
         recyclerViewDSBaiHat.setLayoutManager(new LinearLayoutManager(DanhSachBaiHatActivity.this));
         recyclerViewDSBaiHat.setAdapter(danhSachBaiHatAdapter);
+
+        eventClick();
     }
 
     private void getDataBanner(String title, int picture, String singerName, int linkSong) {
@@ -143,6 +149,8 @@ public class DanhSachBaiHatActivity extends AppCompatActivity {
 
         recyclerViewDSBaiHat.setLayoutManager(new LinearLayoutManager(DanhSachBaiHatActivity.this));
         recyclerViewDSBaiHat.setAdapter(danhSachBaiHatAdapter);
+
+        eventClick();
     }
 
     private void setValueView(String name, int picture) {
@@ -168,6 +176,8 @@ public class DanhSachBaiHatActivity extends AppCompatActivity {
 
         collapsingToolbarLayout.setExpandedTitleColor(Color.WHITE);
         collapsingToolbarLayout.setCollapsedTitleTextColor(Color.WHITE);
+
+        floatingActionButtonDsBaiHat.setEnabled(false);
     }
 
     private void anhXa() {
@@ -198,5 +208,17 @@ public class DanhSachBaiHatActivity extends AppCompatActivity {
                 album = (Album) intent.getSerializableExtra("album");
             }
         }
+    }
+
+    private void eventClick() {
+        floatingActionButtonDsBaiHat.setEnabled(true);
+        floatingActionButtonDsBaiHat.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(DanhSachBaiHatActivity.this, MediaPlayerActivity.class);
+                intent.putExtra("allSong", songArrayList);
+                startActivity(intent);
+            }
+        });
     }
 }
