@@ -83,8 +83,8 @@ public class DanhSachBaiHatActivity extends AppCompatActivity {
         songArrayList = new ArrayList<>();
 
         if (tenAlbum.equals("Blank Space")) {
-            songArrayList.add(new Song("Blank Space", R.drawable.pic1_album, "Taylor Swift", R.drawable.acoustic_theloai));
-            songArrayList.add(new Song("Look what you made me do", R.drawable.lookwhatyoumademedo, "Taylor Swift", R.drawable.lookwhatyoumademedo));
+            songArrayList.add(new Song("Blank Space", R.drawable.pic1_album, "Taylor Swift", R.raw.blank_space));
+            songArrayList.add(new Song("Look what you made me do", R.drawable.lookwhatyoumademedo, "Taylor Swift", R.raw.look_what_you_made_me_do));
             songArrayList.add(new Song("Red", R.drawable.red, "Taylor Swift", R.raw.red));
             songArrayList.add(new Song("22", R.drawable.twenty, "Taylor Swift", R.raw.twenty));
             songArrayList.add(new Song("Gorgeous", R.drawable.gorgeous, "Taylor Swift", R.raw.gorgeous));
@@ -97,7 +97,7 @@ public class DanhSachBaiHatActivity extends AppCompatActivity {
             songArrayList.add(new Song("Roses", R.drawable.roses, "The Chainsmokers", R.raw.roses));
             songArrayList.add(new Song("All we know", R.drawable.allweknow, "The Chainsmokers", R.raw.all_we_know));
         } else if (tenAlbum.equals("Wolves")) {
-            songArrayList.add(new Song("Boyfriend", R.drawable.boyfriend, "Selena Gomez", R.drawable.boyfriend));
+            songArrayList.add(new Song("Boyfriend", R.drawable.boyfriend, "Selena Gomez", R.raw.boyfriend));
             songArrayList.add(new Song("Come and get it", R.drawable.comeandgetit, "Selena Gomez", R.raw.come_get_it));
             songArrayList.add(new Song("Back to you", R.drawable.backtou, "Selena Gomez", R.raw.back_to_you));
             songArrayList.add(new Song("Wolves", R.drawable.pic1_album, "Selena Gomez", R.raw.wolves));

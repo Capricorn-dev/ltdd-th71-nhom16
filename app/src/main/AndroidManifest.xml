@@ -11,22 +11,34 @@
         android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="activity.MediaPlayerActivity"></activity>
-        <activity android:name="activity.DanhSachTatCaAlbumActivity" />
-        <activity android:name="activity.DanhSachTheLoaiTheoChuDeActivity" />
-        <activity android:name="activity.DanhSachTatCaChuDeActivity" />
-        <activity android:name="activity.DanhSachBaiHatPlayListActivity" />
-        <activity android:name="activity.DanhSachBaiHatActivity" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".PlayListActivity" />
-        <activity android:name=".ResActivity" />
-        <activity android:name=".Main2Activity" />
-        <activity android:name="activity.HomePage">
+        <activity
+            android:name=".SplashScreenActivity"
+            android:theme="@style/SplashScreenTheme"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name="activity.MediaPlayerActivity" android:screenOrientation="portrait"/>
+        <activity android:name="activity.DanhSachTatCaAlbumActivity" android:screenOrientation="portrait"/>
+        <activity android:name="activity.DanhSachTheLoaiTheoChuDeActivity" android:screenOrientation="portrait"/>
+        <activity android:name="activity.DanhSachTatCaChuDeActivity" android:screenOrientation="portrait"/>
+        <activity android:name="activity.DanhSachBaiHatPlayListActivity" android:screenOrientation="portrait"/>
+        <activity android:name="activity.DanhSachBaiHatActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".MainActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".PlayListActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".ResActivity" android:screenOrientation="portrait"/>
+        <activity android:name=".Main2Activity" android:screenOrientation="portrait"/>
+        <activity android:name="activity.HomePage" android:screenOrientation="portrait">
+
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
     </application>
 
