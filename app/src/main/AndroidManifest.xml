@@ -11,7 +11,16 @@
         android:roundIcon="@mipmap/icon"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name="activity.MediaPlayerActivity"></activity>
+        <activity
+            android:name=".SplashScreenActivity"
+            android:theme="@style/SplashScreenTheme">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="activity.MediaPlayerActivity" />
         <activity android:name="activity.DanhSachTatCaAlbumActivity" />
         <activity android:name="activity.DanhSachTheLoaiTheoChuDeActivity" />
         <activity android:name="activity.DanhSachTatCaChuDeActivity" />
@@ -22,11 +31,13 @@
         <activity android:name=".ResActivity" />
         <activity android:name=".Main2Activity" />
         <activity android:name="activity.HomePage">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            <!-- <intent-filter> -->
+            <!-- <action android:name="android.intent.action.MAIN" /> -->
+
+
+            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
+            <!-- </intent-filter> -->
         </activity>
     </application>
 
