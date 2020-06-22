@@ -2,6 +2,7 @@ package adapter;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -21,6 +22,7 @@ import model.ChuDe;
 public class DanhSachTatCaChuDeAdapter extends RecyclerView.Adapter<DanhSachTatCaChuDeAdapter.ViewHolder> {
     Context context;
     ArrayList<ChuDe> chuDeArrayList;
+    public static final String chuDe = "chuDe";
 
     public DanhSachTatCaChuDeAdapter(Context context, ArrayList<ChuDe> chuDeArrayList) {
         this.context = context;
@@ -58,7 +60,8 @@ public class DanhSachTatCaChuDeAdapter extends RecyclerView.Adapter<DanhSachTatC
                 @Override
                 public void onClick(View v) {
                     Intent intent = new Intent(context, DanhSachTheLoaiTheoChuDeActivity.class);
-                    intent.putExtra("chuDe", chuDeArrayList.get(getPosition()));
+                    intent.putExtra(chuDe, chuDeArrayList.get(getPosition()));
+                    intent.putExtra("item", chuDeArrayList.get(getPosition()).getTenChuDe());
                     context.startActivity(intent);
                 }
             });

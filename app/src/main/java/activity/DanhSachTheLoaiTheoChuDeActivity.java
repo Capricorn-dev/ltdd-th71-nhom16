@@ -15,9 +15,12 @@ import com.example.appmusic.R;
 
 import java.util.ArrayList;
 
+import adapter.DanhSachTatCaChuDeAdapter;
 import adapter.DanhSachTheLoaiTheoChuDeAdapter;
 import model.ChuDe;
 import model.TheLoai;
+
+import static adapter.DanhSachTatCaChuDeAdapter.*;
 
 public class DanhSachTheLoaiTheoChuDeActivity extends AppCompatActivity {
     ChuDe chuDe;
@@ -45,10 +48,26 @@ public class DanhSachTheLoaiTheoChuDeActivity extends AppCompatActivity {
     private void getData() {
         theLoaiArrayList = new ArrayList<>();
 
-        theLoaiArrayList.add(theLoai = new TheLoai("R & B", R.drawable.dance_theloai));
-        theLoaiArrayList.add(theLoai = new TheLoai("Acoustic Pop", R.drawable.edm_theloai));
-        theLoaiArrayList.add(theLoai = new TheLoai("Dance Pop", R.drawable.dance_theloai));
+        Intent intent = getIntent();
 
+        if (intent.hasExtra("item")) {
+            if (intent.getStringExtra("item").equals("Acoustic")) {
+                theLoaiArrayList.add(theLoai = new TheLoai("Acoustic 1", R.drawable.dance_theloai));
+                theLoaiArrayList.add(theLoai = new TheLoai("Acoustic 2", R.drawable.edm_theloai));
+            } else if (intent.getStringExtra("item").equals("EDM")) {
+                theLoaiArrayList.add(theLoai = new TheLoai("EDM 1", R.drawable.dance_theloai));
+                theLoaiArrayList.add(theLoai = new TheLoai("EDM 2", R.drawable.edm_theloai));
+            } else if (intent.getStringExtra("item").equals("Nữ thần Ariana Grande")) {
+                theLoaiArrayList.add(theLoai = new TheLoai("Nữ thần Ariana Grande 1", R.drawable.dance_theloai));
+                theLoaiArrayList.add(theLoai = new TheLoai("Nữ thần Ariana Grande 2", R.drawable.edm_theloai));
+            } else if (intent.getStringExtra("item").equals("Ca khúc ngày mưa")) {
+                theLoaiArrayList.add(theLoai = new TheLoai("Ca khúc ngày mưa 1", R.drawable.dance_theloai));
+                theLoaiArrayList.add(theLoai = new TheLoai("Ca khúc ngày mưa 2", R.drawable.edm_theloai));
+            } else if (intent.getStringExtra("item").equals("Yêu là chân ái")) {
+                theLoaiArrayList.add(theLoai = new TheLoai("Yêu là chân ái 1", R.drawable.dance_theloai));
+                theLoaiArrayList.add(theLoai = new TheLoai("Yêu là chân ái 2", R.drawable.edm_theloai));
+            }
+        }
         danhSachTheLoaiTheoChuDeAdapter = new DanhSachTheLoaiTheoChuDeAdapter(DanhSachTheLoaiTheoChuDeActivity.this,
                 theLoaiArrayList);
 
