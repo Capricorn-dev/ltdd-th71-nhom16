@@ -35,8 +35,7 @@
                 android:id="@+id/imgalbums"
                 android:layout_width="180dp"
                 android:layout_height="220dp"
-                android:background="#FF8C00"
-                app:srcCompat="@drawable/albums" />
+                android:background="@drawable/sevenring" />
 
         </LinearLayout>
 
@@ -65,8 +64,7 @@
                 android:id="@+id/imgartist"
                 android:layout_width="180dp"
                 android:layout_height="220dp"
-                android:background="#228B22"
-                app:srcCompat="@drawable/artists" />
+                android:background="@drawable/tuoitre_album" />
         </LinearLayout>
     </LinearLayout>
 
@@ -99,8 +97,7 @@
                 android:id="@+id/imgplaylist"
                 android:layout_height="220dp"
                 android:layout_width="180dp"
-                android:background="#9400D3"
-                app:srcCompat="@drawable/playlist2" />
+                android:background="@drawable/motculua"/>
 
         </LinearLayout>
 
@@ -123,12 +120,12 @@
                 android:textSize="20dp"
                 android:textStyle="bold"
                 tools:ignore="RtlCompat" />
+
             <ImageView
                 android:id="@+id/imgtracks"
-                android:layout_height="220dp"
                 android:layout_width="180dp"
-                android:background="#20B2AA"
-                app:srcCompat="@drawable/tracks" />
+                android:layout_height="220dp"
+                android:background="@drawable/sickboy" />
         </LinearLayout>
     </LinearLayout>
 </LinearLayout>
