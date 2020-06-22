@@ -296,7 +296,7 @@ public class PlayerActivity extends AppCompatActivity implements MediaPlayer.OnC
         songTitleLabel           = (TextView) findViewById(R.id.songTitle);
         songCurrentDurationLabel = (TextView) findViewById(R.id.songCurrentDurationLabel);
         songTotalDurationLabel   = (TextView) findViewById(R.id.songTotalDurationLabel);
-        animation                = AnimationUtils.loadAnimation(this,R.animator.disc_rotate);
+        animation                = AnimationUtils.loadAnimation(this,R.anim.disc_rotate);
     }
 
 

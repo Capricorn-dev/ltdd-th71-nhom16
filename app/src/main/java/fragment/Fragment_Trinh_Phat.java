@@ -133,7 +133,7 @@ public class Fragment_Trinh_Phat extends Fragment implements MediaPlayer.OnCompl
         songTitleLabel           = (TextView) view.findViewById(R.id.songTitle);
         songCurrentDurationLabel = (TextView) view.findViewById(R.id.songCurrentDurationLabel);
         songTotalDurationLabel   = (TextView) view.findViewById(R.id.songTotalDurationLabel);
-        animation                = AnimationUtils.loadAnimation(view.getContext(),R.animator.disc_rotate);
+        animation                = AnimationUtils.loadAnimation(view.getContext(),R.anim.disc_rotate);
     }
 
     /**

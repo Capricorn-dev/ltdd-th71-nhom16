@@ -112,6 +112,7 @@ public class MediaPlayerActivity extends AppCompatActivity {
                 if (viewPagerMediaPlayerAdapter.getItem(1) != null) {
                     if (mediaPlayerArrayList.size() > 0) {
                         fragment_dia_nhac.changeRecordBackGround(mediaPlayerArrayList.get(0).getPicture());
+                        fragment_dia_nhac.rotateRecord(true);
                         handler.removeCallbacks(this);
                     } else {
                         handler.postDelayed(this, 300);
@@ -126,9 +127,11 @@ public class MediaPlayerActivity extends AppCompatActivity {
                 if (mediaPlayer.isPlaying()) {
                     mediaPlayer.pause();
                     btnPlay.setImageResource(R.drawable.btn_play);
+                    fragment_dia_nhac.rotateRecord(false);
                 } else {
                     mediaPlayer.start();
                     btnPlay.setImageResource(R.drawable.btn_pause);
+                    fragment_dia_nhac.rotateRecord(true);
                 }
             }
         });
