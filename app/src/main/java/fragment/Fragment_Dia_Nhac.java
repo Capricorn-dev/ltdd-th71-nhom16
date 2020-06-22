@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.view.animation.LinearInterpolator;
 
 import androidx.annotation.NonNull;
@@ -20,6 +22,8 @@ public class Fragment_Dia_Nhac extends Fragment {
     View view;
     CircleImageView circleImgViewDiaNhac;
     ObjectAnimator objectAnimator;
+
+    Animation animation;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -32,10 +36,20 @@ public class Fragment_Dia_Nhac extends Fragment {
         objectAnimator.setRepeatMode(ValueAnimator.RESTART);
         objectAnimator.setInterpolator(new LinearInterpolator());
 
+        animation = AnimationUtils.loadAnimation(this.view.getContext(), R.anim.disc_rotate);
+
         return view;
     }
 
     public void changeRecordBackGround(int picture) {
         circleImgViewDiaNhac.setImageResource(picture);
+    }
+
+    public void rotateRecord(boolean isRotated) {
+        if (isRotated == true)  {
+            circleImgViewDiaNhac.startAnimation(animation);
+        } else {
+            circleImgViewDiaNhac.clearAnimation();
+        }
     }
 }
