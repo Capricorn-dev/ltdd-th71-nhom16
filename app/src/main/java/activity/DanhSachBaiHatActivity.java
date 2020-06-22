@@ -102,6 +102,24 @@ public class DanhSachBaiHatActivity extends AppCompatActivity {
             songArrayList.add(new Song("Back to you", R.drawable.backtou, "Selena Gomez", R.raw.back_to_you));
             songArrayList.add(new Song("Wolves", R.drawable.pic1_album, "Selena Gomez", R.raw.wolves));
             songArrayList.add(new Song("Slow down", R.drawable.slowdown, "Selena Gomez", R.raw.slow_down));
+        }else if (tenAlbum.equals("Nữ hoàng Ariana Grande")) {
+            songArrayList.add(new Song("Seven rings", R.drawable.sevenring, "Ariana Grande", R.raw.seven_rings));
+            songArrayList.add(new Song("Blank Space", R.drawable.pic1_album, "Taylor Swift", R.raw.blank_space));
+            songArrayList.add(new Song("Look what you made me do", R.drawable.lookwhatyoumademedo, "Taylor Swift", R.raw.look_what_you_made_me_do));
+            songArrayList.add(new Song("Red", R.drawable.red, "Taylor Swift", R.raw.red));
+            songArrayList.add(new Song("22", R.drawable.twenty, "Taylor Swift", R.raw.twenty));
+            songArrayList.add(new Song("Gorgeous", R.drawable.gorgeous, "Taylor Swift", R.raw.gorgeous));
+        }else if (tenAlbum.equals("Vpop")) {
+            songArrayList.add(new Song("Như lời đồn", R.drawable.nhuloidon, "Bảo Anh", R.raw.nhu_loi_don));
+            songArrayList.add(new Song("Vì ai vì anh", R.drawable.viaivianh, "Đông Nhi", R.raw.vi_ai_vi_anh));
+        }else if (tenAlbum.equals("Young")) {
+            songArrayList.add(new Song("Something just kike this", R.drawable.pic1_album, "The Chainsmokers", R.raw.something_just_like_this));
+            songArrayList.add(new Song("Dont let me down", R.drawable.pic1_album, "The Chainsmokers", R.raw.dont_let_me_down));
+            songArrayList.add(new Song("Sick boy", R.drawable.sickboy, "The Chainsmokers", R.raw.sick_boy));
+            songArrayList.add(new Song("Closer", R.drawable.closer, "The Chainsmokers", R.raw.closer));
+            songArrayList.add(new Song("Paris", R.drawable.paris, "The Chainsmokers", R.raw.paris));
+            songArrayList.add(new Song("Roses", R.drawable.roses, "The Chainsmokers", R.raw.roses));
+            songArrayList.add(new Song("All we know", R.drawable.allweknow, "The Chainsmokers", R.raw.all_we_know));
         }
 
         danhSachBaiHatAdapter = new DanhSachBaiHatAdapter(DanhSachBaiHatActivity.this,
@@ -189,6 +207,14 @@ public class DanhSachBaiHatActivity extends AppCompatActivity {
             songArrayList.add(new Song("Boyfriend", R.drawable.boyfriend, "Selena Gomez", R.drawable.boyfriend));
 
         } else if (name.equals("Một cú lừa")) {
+            songArrayList.add(new Song("Yêu em dại khờ", R.drawable.yeudemdaikho, "Lou Hoàng", R.raw.yeu_em_dai_kho));
+            songArrayList.add(new Song("Put your head on my shoulder", R.drawable.putyouhead, "Paul Anka", R.raw.put_your_head_on_my_shoulder));
+            songArrayList.add(new Song("Call me maybe", R.drawable.call_me_maybe, "Carly Rae Jepsen", R.raw.call_me_maybe));
+        } else if (name.equals("Acoustic")) {
+            songArrayList.add(new Song("Yêu em dại khờ", R.drawable.yeudemdaikho, "Lou Hoàng", R.raw.yeu_em_dai_kho));
+            songArrayList.add(new Song("Put your head on my shoulder", R.drawable.putyouhead, "Paul Anka", R.raw.put_your_head_on_my_shoulder));
+            songArrayList.add(new Song("Call me maybe", R.drawable.call_me_maybe, "Carly Rae Jepsen", R.raw.call_me_maybe));
+        } else if (name.equals("EDM")) {
             songArrayList.add(new Song("Yêu em dại khờ", R.drawable.yeudemdaikho, "Lou Hoàng", R.raw.yeu_em_dai_kho));
             songArrayList.add(new Song("Put your head on my shoulder", R.drawable.putyouhead, "Paul Anka", R.raw.put_your_head_on_my_shoulder));
             songArrayList.add(new Song("Call me maybe", R.drawable.call_me_maybe, "Carly Rae Jepsen", R.raw.call_me_maybe));

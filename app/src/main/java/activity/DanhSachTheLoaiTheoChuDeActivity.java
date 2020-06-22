@@ -66,6 +66,15 @@ public class DanhSachTheLoaiTheoChuDeActivity extends AppCompatActivity {
             } else if (intent.getStringExtra("item").equals("Yêu là chân ái")) {
                 theLoaiArrayList.add(theLoai = new TheLoai("Yêu không kiểm soát", R.drawable.yeukokiemsoat));
                 theLoaiArrayList.add(theLoai = new TheLoai("Một cú lừa", R.drawable.motculua));
+            } else if (intent.getStringExtra("item").equals("Dance Pop")) {
+                theLoaiArrayList.add(theLoai = new TheLoai("Yêu không kiểm soát", R.drawable.yeukokiemsoat));
+                theLoaiArrayList.add(theLoai = new TheLoai("Một cú lừa", R.drawable.motculua));
+            } else if (intent.getStringExtra("item").equals("Thập niên")) {
+                theLoaiArrayList.add(theLoai = new TheLoai("Mưa hát", R.drawable.ngaymua));
+                theLoaiArrayList.add(theLoai = new TheLoai("Ngày yêu", R.drawable.sangnaymua));
+            } else if (intent.getStringExtra("item").equals("Music for love")) {
+                theLoaiArrayList.add(theLoai = new TheLoai("Nỗi buồn cuối chiều", R.drawable.cuoichieu));
+                theLoaiArrayList.add(theLoai = new TheLoai("Ngày chia tay", R.drawable.haitugio));
             }
         }
         danhSachTheLoaiTheoChuDeAdapter = new DanhSachTheLoaiTheoChuDeAdapter(DanhSachTheLoaiTheoChuDeActivity.this,
