@@ -93,6 +93,7 @@ public class Fragment_ChuDe_TheLoai extends Fragment {
                 public void onClick(View v) {
                     Intent intent = new Intent(getActivity(), DanhSachTheLoaiTheoChuDeActivity.class);
                     intent.putExtra("chuDe", chuDeArrayList.get(finalI));
+                    intent.putExtra("item", chuDeArrayList.get(finalI).getTenChuDe());
                     startActivity(intent);
                 }
             });

@@ -38,8 +38,8 @@ public class DanhSachTatCaAlbumActivity extends AppCompatActivity {
         albumArrayList = new ArrayList<>();
 
         albumArrayList.add(new Album("Nữ hoàng Ariana Grande", "Arriana Grande", R.drawable.arianagrande_album));
-        albumArrayList.add(new Album("", "Vpop", R.drawable.vpop_album));
-        albumArrayList.add(new Album("", "Young", R.drawable.tuoitre_album));
+        albumArrayList.add(new Album("Vpop", "Vpop", R.drawable.vpop_album));
+        albumArrayList.add(new Album("Young", "Young", R.drawable.tuoitre_album));
 
 
         danhSachTatCaAlbumAdapter = new DanhSachTatCaAlbumAdapter(DanhSachTatCaAlbumActivity.this,
