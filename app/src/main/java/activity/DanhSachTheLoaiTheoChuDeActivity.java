@@ -49,23 +49,23 @@ public class DanhSachTheLoaiTheoChuDeActivity extends AppCompatActivity {
         theLoaiArrayList = new ArrayList<>();
 
         Intent intent = getIntent();
-
+//chỉnh hình ảnh 2 tab
         if (intent.hasExtra("item")) {
-            if (intent.getStringExtra("item").equals("Acoustic")) {
-                theLoaiArrayList.add(theLoai = new TheLoai("Acoustic 1", R.drawable.dance_theloai));
-                theLoaiArrayList.add(theLoai = new TheLoai("Acoustic 2", R.drawable.edm_theloai));
-            } else if (intent.getStringExtra("item").equals("EDM")) {
-                theLoaiArrayList.add(theLoai = new TheLoai("EDM 1", R.drawable.dance_theloai));
-                theLoaiArrayList.add(theLoai = new TheLoai("EDM 2", R.drawable.edm_theloai));
-            } else if (intent.getStringExtra("item").equals("Nữ thần Ariana Grande")) {
-                theLoaiArrayList.add(theLoai = new TheLoai("Nữ thần Ariana Grande 1", R.drawable.dance_theloai));
-                theLoaiArrayList.add(theLoai = new TheLoai("Nữ thần Ariana Grande 2", R.drawable.edm_theloai));
-            } else if (intent.getStringExtra("item").equals("Ca khúc ngày mưa")) {
-                theLoaiArrayList.add(theLoai = new TheLoai("Ca khúc ngày mưa 1", R.drawable.dance_theloai));
-                theLoaiArrayList.add(theLoai = new TheLoai("Ca khúc ngày mưa 2", R.drawable.edm_theloai));
+            if (intent.getStringExtra("item").equals("Ca sĩ hot")) {
+                theLoaiArrayList.add(theLoai = new TheLoai("Sơn Tùng MTP", R.drawable.vpop_album));
+                theLoaiArrayList.add(theLoai = new TheLoai("Melanie Martinez", R.drawable.melaniemartinez));
+                theLoaiArrayList.add(theLoai = new TheLoai("Billie Eilish", R.drawable.billie_eilish));
+            } else if (intent.getStringExtra("item").equals("Cover")) {
+                theLoaiArrayList.add(theLoai = new TheLoai("Jfla", R.drawable.cover));
+            } else if (intent.getStringExtra("item").equals("Âm nhạc buồn")) {
+                theLoaiArrayList.add(theLoai = new TheLoai("Nỗi buồn cuối chiều", R.drawable.cuoichieu));
+                theLoaiArrayList.add(theLoai = new TheLoai("Ngày chia tay", R.drawable.haitugio));
+            } else if (intent.getStringExtra("item").equals("Giai điệu bất hủ")) {
+                theLoaiArrayList.add(theLoai = new TheLoai("Mưa hát", R.drawable.ngaymua));
+                theLoaiArrayList.add(theLoai = new TheLoai("Ngày yêu", R.drawable.sangnaymua));
             } else if (intent.getStringExtra("item").equals("Yêu là chân ái")) {
-                theLoaiArrayList.add(theLoai = new TheLoai("Yêu là chân ái 1", R.drawable.dance_theloai));
-                theLoaiArrayList.add(theLoai = new TheLoai("Yêu là chân ái 2", R.drawable.edm_theloai));
+                theLoaiArrayList.add(theLoai = new TheLoai("Yêu không kiểm soát", R.drawable.yeukokiemsoat));
+                theLoaiArrayList.add(theLoai = new TheLoai("Một cú lừa", R.drawable.motculua));
             }
         }
         danhSachTheLoaiTheoChuDeAdapter = new DanhSachTheLoaiTheoChuDeAdapter(DanhSachTheLoaiTheoChuDeActivity.this,
