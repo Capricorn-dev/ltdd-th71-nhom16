@@ -82,7 +82,7 @@ public class Fragment_Ca_Nhan extends Fragment {
             @Override
             public void onClick(View v) {
                 //Create intent to open TracksActivity
-                Intent tracksIntent = new Intent(getContext(), DanhSachBaiHatActivity.class);
+                Intent tracksIntent = new Intent(getContext(), DanhSachBaiHatPlayListActivity.class);
                 //Start the new activity
                 startActivityForResult(tracksIntent, 100);
             }
